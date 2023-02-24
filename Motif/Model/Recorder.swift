@@ -51,7 +51,6 @@ class Recorder: ObservableObject {
     // MARK: - Methods
     
     private func startRecording() {
-        
         guard manager.isDeviceAvailable == true else { return }
         
         // Set sampling intervals

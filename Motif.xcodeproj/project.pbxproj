@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432A864229A871E900EB570F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 432A864129A871E900EB570F /* SwiftUICharts */; };
 		4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEA2435F501004FCBC3 /* GyroData.swift */; };
 		4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */; };
 		4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */; };
@@ -100,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432A864229A871E900EB570F /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +268,9 @@
 			dependencies = (
 			);
 			name = Motif;
+			packageProductDependencies = (
+				432A864129A871E900EB570F /* SwiftUICharts */,
+			);
 			productName = Motif;
 			productReference = 4CC980332430767400B36A7F /* Motif.app */;
 			productType = "com.apple.product-type.application";
@@ -338,6 +343,9 @@
 				Base,
 			);
 			mainGroup = 4CC9802A2430767400B36A7F;
+			packageReferences = (
+				432A864029A871E900EB570F /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 4CC980342430767400B36A7F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -730,6 +738,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		432A864029A871E900EB570F /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		432A864129A871E900EB570F /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 432A864029A871E900EB570F /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CC9802B2430767400B36A7F /* Project object */;
 }

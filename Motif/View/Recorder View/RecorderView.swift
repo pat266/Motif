@@ -8,6 +8,9 @@
 import Combine
 import SwiftUI
 
+// https://github.com/AppPear/ChartView.git
+import SwiftUICharts
+
 struct RecorderView: View {
     
     @EnvironmentObject var recorder: Recorder
@@ -24,7 +27,17 @@ struct RecorderView: View {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
     }
     
+    let queue = OperationQueue()
+    //let manager = CMMotionManager()
+    
+    @State var timerSubscription: Timer?
+    
+    @State var accelerometerDataX: [Double] = []
+    @State var accelerometerDataY: [Double] = []
+    @State var accelerometerDataZ: [Double] = []
+    
     var body: some View {
+        
         
          NavigationView {
             
@@ -41,14 +54,19 @@ struct RecorderView: View {
                         Slider(value: $recorder.setting.samplingRate, in: 1 ... 200, step: 1)
                     }
                     
+                    let _ = timerSubscription?.invalidate()
+                    if (!accelerometerDataX.isEmpty) {
+                        let _ = accelerometerDataX.removeAll()
+                    }
+                    if (!accelerometerDataY.isEmpty) {
+                        let _ = accelerometerDataY.removeAll()
+                    }
+                    if (!accelerometerDataZ.isEmpty) {
+                        let _ = accelerometerDataZ.removeAll()
+                    }
+                    
                     
                 } else {
-                    
-                    // MARK: Data Display
-                    
-                    Section(header: Text("Time").font(.subheadline).bold()) {
-                        ItemRow(name: "Start Time", value: dateFormatter.string(from: recorder.currentDataRecord!.startTime))
-                    }
                     
                     if entry.accelerometerData != nil {
                         Section(header: Text("Acceleration").font(.subheadline).bold()) {
@@ -56,6 +74,25 @@ struct RecorderView: View {
                             ItemRow(name: "x", value: "\(entry.accelerometerData.acceleration.x) G")
                             ItemRow(name: "y", value: "\(entry.accelerometerData.acceleration.y) G")
                             ItemRow(name: "z", value: "\(entry.accelerometerData.acceleration.z) G")
+                            Spacer()
+                            MultiLineChartView(data:
+                                                [
+                                                    (accelerometerDataX, GradientColors.green),
+                                                     (accelerometerDataY, GradientColors.purple),
+                                                     (accelerometerDataZ, GradientColors.orange)
+                                                ],
+                                               title: "Accelerometer Graph",
+                                               form: ChartForm.extraLarge,
+                                               dropShadow: false)
+                        }
+                        .onAppear {
+                            // Activate timer
+                            timerSubscription = Timer.scheduledTimer(withTimeInterval: (1.0 / recorder.setting.samplingRate), repeats: true) { _ in
+                                accelerometerDataX.append(entry.accelerometerData.acceleration.x)
+                                accelerometerDataY.append(entry.accelerometerData.acceleration.y)
+                                accelerometerDataZ.append(entry.accelerometerData.acceleration.z)
+                            }
+                            
                         }
                     }
                     
@@ -67,6 +104,7 @@ struct RecorderView: View {
                             ItemRow(name: "z", value: "\(entry.gyroData.rotationRate.z) rad/s")
                         }
                     }
+                    
                 }
                 
                 // MARK: Start/Stop Button
