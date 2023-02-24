@@ -27,7 +27,7 @@ struct RecorderView: View {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
     }
     
-    let queue = OperationQueue()
+    private var maxData = 200
     //let manager = CMMotionManager()
     
     @State var timerSubscription: Timer?
@@ -51,7 +51,7 @@ struct RecorderView: View {
                                 Text("Sampling Rate")
                             },
                             valueView: Text("\(Int(recorder.setting.samplingRate)) Hz"))
-                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 200, step: 1)
+                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 100, step: 1)
                     }
                     
                     let _ = timerSubscription?.invalidate()
@@ -91,6 +91,12 @@ struct RecorderView: View {
                                 accelerometerDataX.append(entry.accelerometerData.acceleration.x)
                                 accelerometerDataY.append(entry.accelerometerData.acceleration.y)
                                 accelerometerDataZ.append(entry.accelerometerData.acceleration.z)
+                                // remove first element to limit the size of array
+                                if (accelerometerDataX.count > maxData || accelerometerDataY.count > maxData || accelerometerDataZ.count > maxData) {
+                                    accelerometerDataX.removeFirst()
+                                    accelerometerDataY.removeFirst()
+                                    accelerometerDataZ.removeFirst()
+                                }
                             }
                             
                         }
