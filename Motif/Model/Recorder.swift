@@ -57,14 +57,10 @@ class Recorder: ObservableObject {
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval
         manager.gyroUpdateInterval          = samplingInterval
-        manager.magnetometerUpdateInterval  = samplingInterval
-        manager.deviceMotionUpdateInterval  = samplingInterval
         
         // Start data updates
         manager.startAccelerometerUpdates()
         manager.startGyroUpdates()
-        manager.startMagnetometerUpdates()
-        manager.startDeviceMotionUpdates(using: .xTrueNorthZVertical)
         
         // Initialize data storage
         currentDataRecord = MotionDataSample(startTime: Date(), samplingRate: setting.samplingRate)
@@ -74,17 +70,13 @@ class Recorder: ObservableObject {
             .autoconnect()
             .sink { date in
                 guard let accelerometerData = self.manager.accelerometerData,
-                    let gyroData = self.manager.gyroData,
-                    let magnetometerData = self.manager.magnetometerData,
-                    let deviceMotion = self.manager.deviceMotion
+                    let gyroData = self.manager.gyroData
                     else { return }
                 
                 // Save motion data to entry and record
                 self.currentDataEntry = MotionDataEntry(
                     accelerometerData: accelerometerData,
-                    gyroData: gyroData,
-                    magnetometerData: magnetometerData,
-                    deviceMotion: deviceMotion
+                    gyroData: gyroData
                 )
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
         }
@@ -101,8 +93,6 @@ class Recorder: ObservableObject {
         // Stop data updates
         manager.stopAccelerometerUpdates()
         manager.stopGyroUpdates()
-        manager.stopMagnetometerUpdates()
-        manager.stopDeviceMotionUpdates()
         
         // Add new record to record list
         guard let record = currentDataRecord else { return }
@@ -111,16 +101,6 @@ class Recorder: ObservableObject {
         #if DEBUG
         print("Appended sample to samples. Samples count: \(samples.count)")
         
-        // Print JSON of sample
-//        var data: Data
-//        do {
-//            data = try encoder.encode(samples)
-//        } catch {
-//            print("Failed to encode recordList.")
-//            return
-//        }
-//        let string = String(data: data, encoding: .utf8)!
-//        print(string)
         #endif
         
         // Clear motion data
@@ -185,7 +165,5 @@ extension CMMotionManager {
     var isDeviceAvailable: Bool {
         return isAccelerometerAvailable
             && isGyroAvailable
-            && isMagnetometerAvailable
-            && isDeviceMotionAvailable
     }
 }

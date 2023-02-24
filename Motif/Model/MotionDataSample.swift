@@ -33,19 +33,15 @@ struct MotionDataSample: Codable, Equatable, Hashable, Identifiable {
     // MARK: - Computed Properties
     var accelerometerDataFirstTimestamp: Date? { entries.first?.accelerometerData?.timestamp }
     var gyroDataFirstTimestamp:          Date? { entries.first?.gyroData?.timestamp }
-    var magnetometerDataFirstTimestamp:  Date? { entries.first?.magnetometerData?.timestamp }
-    var deviceMotionDataFirstTimestamp:  Date? { entries.first?.deviceMotion?.timestamp }
     var firstTimestamp: Date? {
-        let timestamps = [accelerometerDataFirstTimestamp, gyroDataFirstTimestamp, magnetometerDataFirstTimestamp, deviceMotionDataFirstTimestamp]
+        let timestamps = [accelerometerDataFirstTimestamp, gyroDataFirstTimestamp]
         return timestamps.compactMap { $0 }.min()
     }
     
     var accelerometerDataLastTimestamp:  Date? { entries.last?.accelerometerData?.timestamp }
     var gyroDataLastTimestamp:           Date? { entries.last?.gyroData?.timestamp }
-    var magnetometerDataLastTimestamp:   Date? { entries.last?.magnetometerData?.timestamp }
-    var deviceMotionDataLastTimestamp:   Date? { entries.last?.deviceMotion?.timestamp }
     var lastTimestamp: Date? {
-        let timestamps = [accelerometerDataLastTimestamp, gyroDataLastTimestamp, magnetometerDataLastTimestamp, deviceMotionDataLastTimestamp]
+        let timestamps = [accelerometerDataLastTimestamp, gyroDataLastTimestamp]
         return timestamps.compactMap { $0 }.max()
     }
     

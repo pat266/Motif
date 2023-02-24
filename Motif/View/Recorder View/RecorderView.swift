@@ -89,15 +89,6 @@ struct RecorderView: View {
                             ItemRow(name: "z", value: "\(entry.gyroData.rotationRate.z) rad/s")
                         }
                     }
-                    
-                    if entry.magnetometerData != nil {
-                        Section(header: Text("Magnetometer").font(.subheadline).bold()) {
-                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.magnetometerData.timestamp))
-                            ItemRow(name: "x", value: "\(entry.magnetometerData.magneticField.x) mT")
-                            ItemRow(name: "y", value: "\(entry.magnetometerData.magneticField.y) mT")
-                            ItemRow(name: "z", value: "\(entry.magnetometerData.magneticField.z) mT")
-                        }
-                    }
                 }
                 
                 // MARK: Start/Stop Button

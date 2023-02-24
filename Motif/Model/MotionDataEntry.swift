@@ -12,8 +12,6 @@ struct MotionDataEntry: Codable, Equatable, Hashable, Identifiable {
     var id = UUID()
     var accelerometerData: AccelerometerData! = nil
     var gyroData:          GyroData!          = nil
-    var magnetometerData:  MagnetometerData!  = nil
-    var deviceMotion:      DeviceMotion!      = nil
 
     static let keyPathsAndTitles: [(PartialKeyPath<MotionDataEntry>, String)] = [
         
@@ -35,48 +33,12 @@ struct MotionDataEntry: Codable, Equatable, Hashable, Identifiable {
         (\MotionDataEntry.gyroData?.rotationRate.y,                                 "rawRotationRateY"),
         (\MotionDataEntry.gyroData?.rotationRate.z,                                 "rawRotationRateZ"),
         
-        /* Magnetometer */
-        
-        (\MotionDataEntry.magnetometerData?.timestamp,                              "magnetometerTimestamp"),
-        (\MotionDataEntry.magnetometerData?.timeSinceBoot,                          "magnetometerTimeSinceBoot"),
-        (\MotionDataEntry.magnetometerData?.magneticField.x,                        "rawMagneticFieldX"),
-        (\MotionDataEntry.magnetometerData?.magneticField.y,                        "rawMagneticFieldY"),
-        (\MotionDataEntry.magnetometerData?.magneticField.z,                        "rawMagneticFieldZ"),
-        
-        /* Device motion */
-        
-        (\MotionDataEntry.deviceMotion?.timestamp,                                  "processedDataTimestamp"),
-        (\MotionDataEntry.deviceMotion?.timeSinceBoot,                              "processedDataTimeSinceBoot"),
-        
-        (\MotionDataEntry.deviceMotion?.attitude.x,                                 "processedAttitudeX"),
-        (\MotionDataEntry.deviceMotion?.attitude.y,                                 "processedAttitudeY"),
-        (\MotionDataEntry.deviceMotion?.attitude.z,                                 "processedAttitudeZ"),
-        (\MotionDataEntry.deviceMotion?.rotationRate.x,                             "processedRotationRateX"),
-        (\MotionDataEntry.deviceMotion?.rotationRate.y,                             "processedRotationRateY"),
-        (\MotionDataEntry.deviceMotion?.rotationRate.z,                             "processedRotationRateZ"),
-        
-        (\MotionDataEntry.deviceMotion?.gravity.x,                                  "processedGravityX"),
-        (\MotionDataEntry.deviceMotion?.gravity.y,                                  "processedGravityY"),
-        (\MotionDataEntry.deviceMotion?.gravity.z,                                  "processedGravityZ"),
-        (\MotionDataEntry.deviceMotion?.userAcceleration.x,                         "processedUserAccelerationX"),
-        (\MotionDataEntry.deviceMotion?.userAcceleration.y,                         "processedUserAccelerationY"),
-        (\MotionDataEntry.deviceMotion?.userAcceleration.z,                         "processedUserAccelerationZ"),
-        
-        (\MotionDataEntry.deviceMotion?.magneticField.x,                            "processedMagneticFieldX"),
-        (\MotionDataEntry.deviceMotion?.magneticField.y,                            "processedMagneticFieldY"),
-        (\MotionDataEntry.deviceMotion?.magneticField.z,                            "processedMagneticFieldZ"),
-        (\MotionDataEntry.deviceMotion?.magneticFieldCalibrationAccuracy.rawValue,  "processedMagneticFieldCalibrationAccuracy"),
-        
-        (\MotionDataEntry.deviceMotion?.heading,                                    "processedHeading")
-        
     ]
     
-    init(accelerometerData: CMAccelerometerData, gyroData: CMGyroData, magnetometerData: CMMagnetometerData, deviceMotion: CMDeviceMotion) {
+    init(accelerometerData: CMAccelerometerData, gyroData: CMGyroData) {
         
         self.accelerometerData = AccelerometerData(fromData: accelerometerData)
         self.gyroData = GyroData(fromData: gyroData)
-        self.magnetometerData = MagnetometerData(fromData: magnetometerData)
-        self.deviceMotion = DeviceMotion(fromData: deviceMotion)
         
     }
     
