@@ -12,9 +12,9 @@ import CoreMotion
 class Recorder: ObservableObject {
     
     struct RecordSetting {
-        var samplingRate: Double = 100
-        var useTimer: Bool = false
-        var endTime: Date = Date()
+        var samplingRate: Double = 50
+//        var useTimer: Bool = false
+//        var endTime: Date = Date()
     }
     
     private let encoder = JSONEncoder()

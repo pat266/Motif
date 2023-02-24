@@ -31,27 +31,6 @@ struct RecorderView: View {
             Form {
                 if recorder.isRecording == false {
                     
-                    // MARK: Record Settings
-                    
-                    Section {
-                        Toggle(isOn: $recorder.setting.useTimer.animation()) {
-                            HStack {
-                                Image(systemName: "timer")
-                                Text("Timer")
-                            }
-                        }
-                        
-                        if recorder.setting.useTimer {
-                            DatePicker(selection: $recorder.setting.endTime, in: Date()..., displayedComponents: [.date, .hourAndMinute]) {
-                                HStack {
-                                    Image(systemName: "calendar")
-                                    Text("End Time")
-                                }
-                            }
-                            .datePickerStyle(DefaultDatePickerStyle())
-                        }
-                    }
-                    
                     Section {
                         ItemRow(
                             nameView: HStack {
@@ -69,7 +48,6 @@ struct RecorderView: View {
                     
                     Section(header: Text("Time").font(.subheadline).bold()) {
                         ItemRow(name: "Start Time", value: dateFormatter.string(from: recorder.currentDataRecord!.startTime))
-                        ItemRow(name: "Time Elapsed", value: "")
                     }
                     
                     if entry.accelerometerData != nil {
