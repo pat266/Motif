@@ -53,8 +53,10 @@ struct RecorderView: View {
                             valueView: Text("\(Int(recorder.setting.samplingRate)) Hz"))
                         Slider(value: $recorder.setting.samplingRate, in: 1 ... 100, step: 1)
                     }
-                    
+                    // cancel the timer
                     let _ = timerSubscription?.invalidate()
+                    
+                    // reset the accelerometer array
                     if (!accelerometerDataX.isEmpty) {
                         let _ = accelerometerDataX.removeAll()
                     }
@@ -82,20 +84,21 @@ struct RecorderView: View {
                                                      (accelerometerDataZ, GradientColors.orange)
                                                 ],
                                                title: "Accelerometer Graph",
-                                               form: ChartForm.extraLarge,
-                                               dropShadow: false)
+                                               form: ChartForm.extraLarge)
                         }
                         .onAppear {
                             // Activate timer
                             timerSubscription = Timer.scheduledTimer(withTimeInterval: (1.0 / recorder.setting.samplingRate), repeats: true) { _ in
-                                accelerometerDataX.append(entry.accelerometerData.acceleration.x)
-                                accelerometerDataY.append(entry.accelerometerData.acceleration.y)
-                                accelerometerDataZ.append(entry.accelerometerData.acceleration.z)
-                                // remove first element to limit the size of array
-                                if (accelerometerDataX.count > maxData || accelerometerDataY.count > maxData || accelerometerDataZ.count > maxData) {
-                                    accelerometerDataX.removeFirst()
-                                    accelerometerDataY.removeFirst()
-                                    accelerometerDataZ.removeFirst()
+                                if entry.accelerometerData != nil {
+                                    accelerometerDataX.append(entry.accelerometerData.acceleration.x)
+                                    accelerometerDataY.append(entry.accelerometerData.acceleration.y)
+                                    accelerometerDataZ.append(entry.accelerometerData.acceleration.z)
+                                    // remove first element to limit the size of array
+                                    if (accelerometerDataX.count > maxData || accelerometerDataY.count > maxData || accelerometerDataZ.count > maxData) {
+                                        accelerometerDataX.removeFirst()
+                                        accelerometerDataY.removeFirst()
+                                        accelerometerDataZ.removeFirst()
+                                    }
                                 }
                             }
                             
