@@ -12,9 +12,8 @@ import CoreMotion
 class Recorder: ObservableObject {
     
     struct RecordSetting {
-        var samplingRate: Double = 50
-//        var useTimer: Bool = false
-//        var endTime: Date = Date()
+        var samplingRate: Double = 20
+        var maxData: Int = 200
     }
     
     private let encoder = JSONEncoder()
@@ -36,6 +35,14 @@ class Recorder: ObservableObject {
             saveSampleListToDisk()
         }
     }
+    
+    @Published var accelerometerDataX: [Double] = []
+    @Published var accelerometerDataY: [Double] = []
+    @Published var accelerometerDataZ: [Double] = []
+    
+    @Published var gyroscopeDataX: [Double] = []
+    @Published var gyroscopeDataY: [Double] = []
+    @Published var gyroscopeDataZ: [Double] = []
     
     private let sampleListFileName = "sampleList.json"
     private var sampleListFileURL: URL {
@@ -78,6 +85,28 @@ class Recorder: ObservableObject {
                     gyroData: gyroData
                 )
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
+                
+                // add accelerometer data to the array
+                self.accelerometerDataX.append(accelerometerData.acceleration.x)
+                self.accelerometerDataY.append(accelerometerData.acceleration.y)
+                self.accelerometerDataZ.append(accelerometerData.acceleration.z)
+                
+                // add gyroscope data to the array
+                self.gyroscopeDataX.append(gyroData.rotationRate.x)
+                self.gyroscopeDataY.append(gyroData.rotationRate.y)
+                self.gyroscopeDataZ.append(gyroData.rotationRate.z)
+                
+                // remove first element to limit the size of array
+                if (self.accelerometerDataX.count > self.setting.maxData || self.accelerometerDataY.count > self.setting.maxData || self.accelerometerDataZ.count > self.setting.maxData) {
+                    self.accelerometerDataX.removeFirst()
+                    self.accelerometerDataY.removeFirst()
+                    self.accelerometerDataZ.removeFirst()
+                }
+                if (self.gyroscopeDataX.count > self.setting.maxData || self.gyroscopeDataY.count > self.setting.maxData || self.gyroscopeDataZ.count > self.setting.maxData) {
+                    self.gyroscopeDataX.removeFirst()
+                    self.gyroscopeDataY.removeFirst()
+                    self.gyroscopeDataZ.removeFirst()
+                }
         }
         
     }
@@ -155,6 +184,30 @@ class Recorder: ObservableObject {
         
         // Restore list
         samples = list
+    }
+    
+    public func clearAccelerometerArray() {
+        if (!self.accelerometerDataX.isEmpty) {
+            self.accelerometerDataX.removeAll()
+        }
+        if (!accelerometerDataY.isEmpty) {
+            self.accelerometerDataY.removeAll()
+        }
+        if (!accelerometerDataZ.isEmpty) {
+            self.accelerometerDataZ.removeAll()
+        }
+    }
+    
+    public func clearGyroscopeArray() {
+        if (!self.gyroscopeDataX.isEmpty) {
+            self.gyroscopeDataX.removeAll()
+        }
+        if (!gyroscopeDataY.isEmpty) {
+            self.gyroscopeDataY.removeAll()
+        }
+        if (!gyroscopeDataZ.isEmpty) {
+            self.gyroscopeDataZ.removeAll()
+        }
     }
     
 }

@@ -27,7 +27,7 @@ struct RecorderView: View {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
     }
     
-    let queue = OperationQueue()
+    private var maxData = 200
     //let manager = CMMotionManager()
     
     @State var timerSubscription: Timer?
@@ -51,59 +51,50 @@ struct RecorderView: View {
                                 Text("Sampling Rate")
                             },
                             valueView: Text("\(Int(recorder.setting.samplingRate)) Hz"))
-                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 200, step: 1)
+                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 50, step: 1)
                     }
                     
-                    let _ = timerSubscription?.invalidate()
-                    if (!accelerometerDataX.isEmpty) {
-                        let _ = accelerometerDataX.removeAll()
-                    }
-                    if (!accelerometerDataY.isEmpty) {
-                        let _ = accelerometerDataY.removeAll()
-                    }
-                    if (!accelerometerDataZ.isEmpty) {
-                        let _ = accelerometerDataZ.removeAll()
-                    }
+                    // clear array whenever it stops recording
+                    let _ = recorder.clearAccelerometerArray()
+                    let _ = recorder.clearGyroscopeArray()
                     
                     
                 } else {
-                    
-                    if entry.accelerometerData != nil {
-                        Section(header: Text("Acceleration").font(.subheadline).bold()) {
-                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.accelerometerData.timestamp))
-                            ItemRow(name: "x", value: "\(entry.accelerometerData.acceleration.x) G")
-                            ItemRow(name: "y", value: "\(entry.accelerometerData.acceleration.y) G")
-                            ItemRow(name: "z", value: "\(entry.accelerometerData.acceleration.z) G")
-                            Spacer()
+                    HStack {
+                        if entry.accelerometerData != nil {
+//                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.accelerometerData.timestamp))
+//                            ItemRow(name: "x", value: "\(entry.accelerometerData.acceleration.x) G")
+//                            ItemRow(name: "y", value: "\(entry.accelerometerData.acceleration.y) G")
+//                            ItemRow(name: "z", value: "\(entry.accelerometerData.acceleration.z) G")
+//                            Spacer()
                             MultiLineChartView(data:
                                                 [
-                                                    (accelerometerDataX, GradientColors.green),
-                                                     (accelerometerDataY, GradientColors.purple),
-                                                     (accelerometerDataZ, GradientColors.orange)
+                                                    (recorder.accelerometerDataX, GradientColors.green),
+                                                    (recorder.accelerometerDataY, GradientColors.purple),
+                                                    (recorder.accelerometerDataZ, GradientColors.orange)
                                                 ],
                                                title: "Accelerometer Graph",
-                                               form: ChartForm.extraLarge,
-                                               dropShadow: false)
-                        }
-                        .onAppear {
-                            // Activate timer
-                            timerSubscription = Timer.scheduledTimer(withTimeInterval: (1.0 / recorder.setting.samplingRate), repeats: true) { _ in
-                                accelerometerDataX.append(entry.accelerometerData.acceleration.x)
-                                accelerometerDataY.append(entry.accelerometerData.acceleration.y)
-                                accelerometerDataZ.append(entry.accelerometerData.acceleration.z)
-                            }
-                            
+                                               form: ChartForm.extraLarge)
                         }
                     }
                     
-                    if entry.gyroData != nil {
-                        Section(header: Text("Gyroscope").font(.subheadline).bold()) {
-                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.gyroData.timestamp))
-                            ItemRow(name: "x", value: "\(entry.gyroData.rotationRate.x) rad/s")
-                            ItemRow(name: "y", value: "\(entry.gyroData.rotationRate.y) rad/s")
-                            ItemRow(name: "z", value: "\(entry.gyroData.rotationRate.z) rad/s")
+                    HStack {
+                        if entry.gyroData != nil {
+//                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.gyroData.timestamp))
+//                            ItemRow(name: "x", value: "\(entry.gyroData.rotationRate.x) rad/s")
+//                            ItemRow(name: "y", value: "\(entry.gyroData.rotationRate.y) rad/s")
+//                            ItemRow(name: "z", value: "\(entry.gyroData.rotationRate.z) rad/s")
+                            MultiLineChartView(data:
+                                                [
+                                                    (recorder.gyroscopeDataX, GradientColors.green),
+                                                    (recorder.gyroscopeDataY, GradientColors.purple),
+                                                    (recorder.gyroscopeDataZ, GradientColors.orange)
+                                                ],
+                                               title: "Gyroscope Graph",
+                                               form: ChartForm.extraLarge)
                         }
                     }
+                    
                     
                 }
                 
