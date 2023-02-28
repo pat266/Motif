@@ -86,27 +86,7 @@ class Recorder: ObservableObject {
                 )
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
                 
-                // add accelerometer data to the array
-                self.accelerometerDataX.append(accelerometerData.acceleration.x)
-                self.accelerometerDataY.append(accelerometerData.acceleration.y)
-                self.accelerometerDataZ.append(accelerometerData.acceleration.z)
-                
-                // add gyroscope data to the array
-                self.gyroscopeDataX.append(gyroData.rotationRate.x)
-                self.gyroscopeDataY.append(gyroData.rotationRate.y)
-                self.gyroscopeDataZ.append(gyroData.rotationRate.z)
-                
-                // remove first element to limit the size of array
-                if (self.accelerometerDataX.count > self.setting.maxData || self.accelerometerDataY.count > self.setting.maxData || self.accelerometerDataZ.count > self.setting.maxData) {
-                    self.accelerometerDataX.removeFirst()
-                    self.accelerometerDataY.removeFirst()
-                    self.accelerometerDataZ.removeFirst()
-                }
-                if (self.gyroscopeDataX.count > self.setting.maxData || self.gyroscopeDataY.count > self.setting.maxData || self.gyroscopeDataZ.count > self.setting.maxData) {
-                    self.gyroscopeDataX.removeFirst()
-                    self.gyroscopeDataY.removeFirst()
-                    self.gyroscopeDataZ.removeFirst()
-                }
+                self.updateData(accelerometerData:accelerometerData, gyroData:gyroData)
         }
         
     }
@@ -134,6 +114,30 @@ class Recorder: ObservableObject {
         // Clear motion data
         currentDataEntry = MotionDataEntry()
         currentDataRecord = nil
+    }
+    
+    private func updateData(accelerometerData: CMAccelerometerData, gyroData: CMGyroData) -> Void {
+        // add accelerometer data to the array
+        self.accelerometerDataX.append(accelerometerData.acceleration.x)
+        self.accelerometerDataY.append(accelerometerData.acceleration.y)
+        self.accelerometerDataZ.append(accelerometerData.acceleration.z)
+        
+        // add gyroscope data to the array
+        self.gyroscopeDataX.append(gyroData.rotationRate.x)
+        self.gyroscopeDataY.append(gyroData.rotationRate.y)
+        self.gyroscopeDataZ.append(gyroData.rotationRate.z)
+        
+        // remove first element to limit the size of array
+        if (self.accelerometerDataX.count > self.setting.maxData || self.accelerometerDataY.count > self.setting.maxData || self.accelerometerDataZ.count > self.setting.maxData) {
+            self.accelerometerDataX.removeFirst()
+            self.accelerometerDataY.removeFirst()
+            self.accelerometerDataZ.removeFirst()
+        }
+        if (self.gyroscopeDataX.count > self.setting.maxData || self.gyroscopeDataY.count > self.setting.maxData || self.gyroscopeDataZ.count > self.setting.maxData) {
+            self.gyroscopeDataX.removeFirst()
+            self.gyroscopeDataY.removeFirst()
+            self.gyroscopeDataZ.removeFirst()
+        }
     }
 
     private func saveSampleListToDisk() {
