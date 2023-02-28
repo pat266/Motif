@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 import CoreMotion
+import AudioToolbox.AudioServices
+
 
 class Recorder: ObservableObject {
     
@@ -75,6 +77,10 @@ class Recorder: ObservableObject {
         timerSubscription = Timer.publish(every: samplingInterval, on: .main, in: .common)
             .autoconnect()
             .sink { date in
+                // use either to vibrate
+                //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                
                 guard let accelerometerData = self.manager.accelerometerData,
                     let gyroData = self.manager.gyroData
                     else { return }
@@ -87,6 +93,8 @@ class Recorder: ObservableObject {
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
                 
                 self.updateData(accelerometerData:accelerometerData, gyroData:gyroData)
+                
+                
         }
         
     }
