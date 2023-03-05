@@ -2,12 +2,14 @@
 //  Recorder.swift
 //  Motif
 //
-//  Created by Pan Weiheng on 2020/4/1.
 //
 
 import Foundation
 import Combine
-import CoreMotion
+import CoreMotion // for accelerator and gyroscope
+import CoreHaptics // for vibration
+import AudioToolbox.AudioServices
+
 
 class Recorder: ObservableObject {
     
@@ -19,6 +21,8 @@ class Recorder: ObservableObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     private let manager = CMMotionManager()
+    private var engine: CHHapticEngine?
+    private let haveStarted = false // boolean for vibration check
     private var timerSubscription: AnyCancellable? = nil
     var samplingInterval: Double { 1.0 / setting.samplingRate }
     
@@ -53,12 +57,26 @@ class Recorder: ObservableObject {
     
     init() {
         loadSampleListFromDisk()
+        self.initHaptic()
+    }
+    
+    // MARK: - De-Initializer
+    deinit {
+        self.destroyHaptics()
     }
 
     // MARK: - Methods
     
     private func startRecording() {
         guard manager.isDeviceAvailable == true else { return }
+        
+        // Vibrate the device
+        self.startHaptics()
+        // How strong the haptic is (0 - 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        // supposed to be infinite, but I think the max is 10 seconds
+        let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
+        self.playHaptic(event: hapticCustom)
         
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval
@@ -86,27 +104,9 @@ class Recorder: ObservableObject {
                 )
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
                 
-                // add accelerometer data to the array
-                self.accelerometerDataX.append(accelerometerData.acceleration.x)
-                self.accelerometerDataY.append(accelerometerData.acceleration.y)
-                self.accelerometerDataZ.append(accelerometerData.acceleration.z)
+                self.updateData(accelerometerData:accelerometerData, gyroData:gyroData)
                 
-                // add gyroscope data to the array
-                self.gyroscopeDataX.append(gyroData.rotationRate.x)
-                self.gyroscopeDataY.append(gyroData.rotationRate.y)
-                self.gyroscopeDataZ.append(gyroData.rotationRate.z)
                 
-                // remove first element to limit the size of array
-                if (self.accelerometerDataX.count > self.setting.maxData || self.accelerometerDataY.count > self.setting.maxData || self.accelerometerDataZ.count > self.setting.maxData) {
-                    self.accelerometerDataX.removeFirst()
-                    self.accelerometerDataY.removeFirst()
-                    self.accelerometerDataZ.removeFirst()
-                }
-                if (self.gyroscopeDataX.count > self.setting.maxData || self.gyroscopeDataY.count > self.setting.maxData || self.gyroscopeDataZ.count > self.setting.maxData) {
-                    self.gyroscopeDataX.removeFirst()
-                    self.gyroscopeDataY.removeFirst()
-                    self.gyroscopeDataZ.removeFirst()
-                }
         }
         
     }
@@ -122,6 +122,9 @@ class Recorder: ObservableObject {
         manager.stopAccelerometerUpdates()
         manager.stopGyroUpdates()
         
+        // cancel the vibratino
+        self.stopHaptics()
+        
         // Add new record to record list
         guard let record = currentDataRecord else { return }
         samples.append(record)
@@ -134,6 +137,30 @@ class Recorder: ObservableObject {
         // Clear motion data
         currentDataEntry = MotionDataEntry()
         currentDataRecord = nil
+    }
+    
+    private func updateData(accelerometerData: CMAccelerometerData, gyroData: CMGyroData) -> Void {
+        // add accelerometer data to the array
+        self.accelerometerDataX.append(accelerometerData.acceleration.x)
+        self.accelerometerDataY.append(accelerometerData.acceleration.y)
+        self.accelerometerDataZ.append(accelerometerData.acceleration.z)
+        
+        // add gyroscope data to the array
+        self.gyroscopeDataX.append(gyroData.rotationRate.x)
+        self.gyroscopeDataY.append(gyroData.rotationRate.y)
+        self.gyroscopeDataZ.append(gyroData.rotationRate.z)
+        
+        // remove first element to limit the size of array
+        if (self.accelerometerDataX.count > self.setting.maxData || self.accelerometerDataY.count > self.setting.maxData || self.accelerometerDataZ.count > self.setting.maxData) {
+            self.accelerometerDataX.removeFirst()
+            self.accelerometerDataY.removeFirst()
+            self.accelerometerDataZ.removeFirst()
+        }
+        if (self.gyroscopeDataX.count > self.setting.maxData || self.gyroscopeDataY.count > self.setting.maxData || self.gyroscopeDataZ.count > self.setting.maxData) {
+            self.gyroscopeDataX.removeFirst()
+            self.gyroscopeDataY.removeFirst()
+            self.gyroscopeDataZ.removeFirst()
+        }
     }
 
     private func saveSampleListToDisk() {
@@ -207,6 +234,60 @@ class Recorder: ObservableObject {
         }
         if (!gyroscopeDataZ.isEmpty) {
             self.gyroscopeDataZ.removeAll()
+        }
+    }
+    
+    // MARK: - Vibration Methods
+    func initHaptic() {
+        // check device support
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func startHaptics() {
+        do {
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func stopHaptics() {
+        engine?.stop()
+    }
+
+    func destroyHaptics() {
+        // The engine stopped; print out why
+        engine?.stoppedHandler = { reason in
+            print("The engine stopped: \(reason)")
+        }
+
+        // If something goes wrong, attempt to restart the engine immediately
+        engine?.resetHandler = { [weak self] in
+            print("The engine reset")
+
+            do {
+                try self?.engine?.start()
+            } catch {
+                print("Failed to restart the engine: \(error)")
+            }
+        }
+    }
+    
+    func playHaptic(event: CHHapticEvent) {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        do {
+            let pattern = try CHHapticPattern(events: [event], parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
         }
     }
     

@@ -51,7 +51,7 @@ struct RecorderView: View {
                                 Text("Sampling Rate")
                             },
                             valueView: Text("\(Int(recorder.setting.samplingRate)) Hz"))
-                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 50, step: 1)
+                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 200, step: 1)
                     }
                     
                     // clear array whenever it stops recording
@@ -60,7 +60,7 @@ struct RecorderView: View {
                     
                     
                 } else {
-                    HStack {
+                    VStack {
                         if entry.accelerometerData != nil {
 //                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.accelerometerData.timestamp))
 //                            ItemRow(name: "x", value: "\(entry.accelerometerData.acceleration.x) G")
@@ -74,7 +74,14 @@ struct RecorderView: View {
                                                     (recorder.accelerometerDataZ, GradientColors.orange)
                                                 ],
                                                title: "Accelerometer Graph",
-                                               form: ChartForm.extraLarge)
+                                               form: ChartForm.extraLarge
+                            ).padding()
+                            
+//                            LineChartView(data: recorder.accelerometerDataX,
+//                                          title: "recorder.accelerometerDataX",
+//                                          form: ChartForm.extraLarge,
+//                                          dropShadow: true
+//                            ).padding()
                         }
                     }
                     
@@ -91,7 +98,8 @@ struct RecorderView: View {
                                                     (recorder.gyroscopeDataZ, GradientColors.orange)
                                                 ],
                                                title: "Gyroscope Graph",
-                                               form: ChartForm.extraLarge)
+                                               form: ChartForm.extraLarge
+                            ).padding()
                         }
                     }
                     
