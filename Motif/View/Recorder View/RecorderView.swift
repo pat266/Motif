@@ -32,10 +32,6 @@ struct RecorderView: View {
     
     @State var timerSubscription: Timer?
     
-    @State var accelerometerDataX: [Double] = []
-    @State var accelerometerDataY: [Double] = []
-    @State var accelerometerDataZ: [Double] = []
-    
     var body: some View {
         
         
