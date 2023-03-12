@@ -1,13 +1,6 @@
-//
-//  RecorderView.swift
-//  Motif
-//
-//  Created by Pan Weiheng on 2020/3/29.
-//
-
 import Combine
 import SwiftUI
-import SwiftUICharts
+import Charts
 
 struct RecorderView: View {
     
@@ -26,7 +19,6 @@ struct RecorderView: View {
     }
     
     private var maxData = 200
-    //let manager = CMMotionManager()
     
     @State var timerSubscription: Timer?
     
@@ -56,26 +48,100 @@ struct RecorderView: View {
                 } else {
                     VStack {
                         if entry.accelerometerData != nil {
-//                            MultiLineChartView(data:
-//                                                [
-//                                                    (recorder.accelerometerDataX, GradientColors.green),
-//                                                    (recorder.accelerometerDataY, GradientColors.purple),
-//                                                    (recorder.accelerometerDataZ, GradientColors.orange)
-//                                                ],
-//                                               title: "Accelerometer Graph",
-//                                               form: ChartForm.extraLarge
-//                            ).padding()
+                            GroupBox("Accelerometer X") {
+                                Chart {
+                                    ForEach(Array(recorder.accelerometerDataX.enumerated()), id: \.element) { index, number in
+                                        LineMark(
+                                            x: .value("index", index),
+                                            y: .value("value", number)
+                                        )
+                                        .interpolationMethod(.catmullRom)
+                                        .foregroundStyle(.blue)
+                                    }
+                                }
+                                .chartXAxis(.hidden)
+                                .padding(.horizontal)
+                            }
                             
-//                            LineChartView(data: recorder.accelerometerDataX,
-//                                          title: "recorder.accelerometerDataX",
-//                                          form: ChartForm.extraLarge,
-//                                          dropShadow: true
-//                            ).padding()
+                            GroupBox("Accelerometer Y") {
+                                Chart {
+                                    ForEach(Array(recorder.accelerometerDataY.enumerated()), id: \.element) { index, number in
+                                        LineMark(
+                                            x: .value("index", index),
+                                            y: .value("value", number)
+                                        )
+                                        .interpolationMethod(.catmullRom)
+                                        .foregroundStyle(.blue)
+                                    }
+                                }
+                                .chartXAxis(.hidden)
+                                .padding(.horizontal)
+                            }
+                            
+                            GroupBox("Accelerometer Z") {
+                                Chart {
+                                    ForEach(Array(recorder.accelerometerDataZ.enumerated()), id: \.element) { index, number in
+                                        LineMark(
+                                            x: .value("index", index),
+                                            y: .value("value", number)
+                                        )
+                                        .interpolationMethod(.catmullRom)
+                                        .foregroundStyle(.blue)
+                                    }
+                                }
+                                .chartXAxis(.hidden)
+                                .padding(.horizontal)
+                            }
                         }
                     }
                     
-                    HStack {
+                    Spacer()
+                    VStack {
                         if entry.gyroData != nil {
+                            GroupBox("Gyroscope X") {
+                                Chart {
+                                    ForEach(Array(recorder.gyroscopeDataX.enumerated()), id: \.element) { index, number in
+                                        LineMark(
+                                            x: .value("index", index),
+                                            y: .value("value", number)
+                                        )
+                                        .interpolationMethod(.catmullRom)
+                                        .foregroundStyle(.blue)
+                                    }
+                                }
+                                .chartXAxis(.hidden)
+                                .padding(.horizontal)
+                            }
+                            
+                            GroupBox("Gyroscope Y") {
+                                Chart {
+                                    ForEach(Array(recorder.gyroscopeDataY.enumerated()), id: \.element) { index, number in
+                                        LineMark(
+                                            x: .value("index", index),
+                                            y: .value("value", number)
+                                        )
+                                        .interpolationMethod(.catmullRom)
+                                        .foregroundStyle(.blue)
+                                    }
+                                }
+                                .chartXAxis(.hidden)
+                                .padding(.horizontal)
+                            }
+                            
+                            GroupBox("gyroscope Z") {
+                                Chart {
+                                    ForEach(Array(recorder.gyroscopeDataZ.enumerated()), id: \.element) { index, number in
+                                        LineMark(
+                                            x: .value("index", index),
+                                            y: .value("value", number)
+                                        )
+                                        .interpolationMethod(.catmullRom)
+                                        .foregroundStyle(.blue)
+                                    }
+                                }
+                                .chartXAxis(.hidden)
+                                .padding(.horizontal)
+                            }
 //                            MultiLineChartView(data:
 //                                                [
 //                                                    (recorder.gyroscopeDataX, GradientColors.green),
