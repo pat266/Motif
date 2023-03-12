@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		439A36B129BD85AA0007DAB2 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 439A36B029BD85AA0007DAB2 /* SwiftUICharts */; };
+		439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */; };
 		4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEA2435F501004FCBC3 /* GyroData.swift */; };
 		4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */; };
 		4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */; };
 		4C32B1272434DB8500A4120F /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B1262434DB8500A4120F /* ItemRow.swift */; };
 		4C32B12B2434F2D500A4120F /* CMLogItem+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B12A2434F2D500A4120F /* CMLogItem+Date.swift */; };
-		4C7979AF243E06B200B8460D /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7979AE243E06B200B8460D /* LineChart.swift */; };
 		4C7979B3243ED33200B8460D /* SampleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7979B2243ED33200B8460D /* SampleDetailView.swift */; };
 		4C8EE925247CF55B00E4E2CE /* Preview Images in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE924247CF55B00E4E2CE /* Preview Images */; };
 		4C8EE928247CF6A800E4E2CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE926247CF6A800E4E2CE /* README.md */; };
@@ -58,12 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLineChart.swift; sourceTree = "<group>"; };
 		4C103AEA2435F501004FCBC3 /* GyroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroData.swift; sourceTree = "<group>"; };
 		4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnetometerData.swift; sourceTree = "<group>"; };
 		4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMotion.swift; sourceTree = "<group>"; };
 		4C32B1262434DB8500A4120F /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		4C32B12A2434F2D500A4120F /* CMLogItem+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMLogItem+Date.swift"; sourceTree = "<group>"; };
-		4C7979AE243E06B200B8460D /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		4C7979B2243ED33200B8460D /* SampleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetailView.swift; sourceTree = "<group>"; };
 		4C8EE924247CF55B00E4E2CE /* Preview Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Images"; sourceTree = "<group>"; };
 		4C8EE926247CF6A800E4E2CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -157,7 +157,7 @@
 				4CC9806B2430E30A00B36A7F /* SampleListView.swift */,
 				4CA9C45A243626ED006E8F3B /* SampleRow.swift */,
 				4C7979B2243ED33200B8460D /* SampleDetailView.swift */,
-				4C7979AE243E06B200B8460D /* LineChart.swift */,
+				439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */,
 				4CB205C624376A8A0065C6E3 /* ShareSampleActivityView.swift */,
 			);
 			path = "Sample List View";
@@ -397,13 +397,13 @@
 				4CCFB668243222EE00E90C80 /* CSVContainer.swift in Sources */,
 				4CB205C924376CDF0065C6E3 /* FileManager+.swift in Sources */,
 				4CC980372430767400B36A7F /* AppDelegate.swift in Sources */,
+				439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */,
 				4CC9806C2430E30A00B36A7F /* SampleListView.swift in Sources */,
 				4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */,
 				4CE0CBB12434D4DA00494CD8 /* MotionDataEntry.swift in Sources */,
 				4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */,
 				4CD2793E2435F34D0037E529 /* AccelerometerData.swift in Sources */,
 				4CC980392430767400B36A7F /* SceneDelegate.swift in Sources */,
-				4C7979AF243E06B200B8460D /* LineChart.swift in Sources */,
 				4C7979B3243ED33200B8460D /* SampleDetailView.swift in Sources */,
 				4C32B12B2434F2D500A4120F /* CMLogItem+Date.swift in Sources */,
 				4CC9806A2430C87500B36A7F /* RecorderView.swift in Sources */,

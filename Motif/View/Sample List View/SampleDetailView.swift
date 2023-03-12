@@ -46,19 +46,19 @@ struct SampleDetailView: View {
                 
                 HStack {
                     Text("x").font(.headline)
-                    LineChart(
+                    SampleLineChart(
                         data: sample.entries.map { ($0.accelerometerData.timeSinceBoot, $0.accelerometerData.acceleration.x) })
                         .frame(height: 100)
                 }.padding()
                 HStack {
                     Text("y").font(.headline)
-                    LineChart(
+                    SampleLineChart(
                         data: sample.entries.map { ($0.accelerometerData.timeSinceBoot, $0.accelerometerData.acceleration.y) })
                         .frame(height: 100)
                 }.padding()
                 HStack {
                     Text("z").font(.headline)
-                    LineChart(
+                    SampleLineChart(
                         data: sample.entries.map { ($0.accelerometerData.timeSinceBoot, $0.accelerometerData.acceleration.z) })
                         .frame(height: 100)
                 }.padding()
@@ -69,19 +69,19 @@ struct SampleDetailView: View {
                 
                 HStack {
                     Text("x").font(.headline)
-                    LineChart(
+                    SampleLineChart(
                         data: sample.entries.map { ($0.gyroData.timeSinceBoot, $0.gyroData.rotationRate.x) })
                         .frame(height: 100)
                 }.padding()
                 HStack {
                     Text("y").font(.headline)
-                    LineChart(
+                    SampleLineChart(
                         data: sample.entries.map { ($0.gyroData.timeSinceBoot, $0.gyroData.rotationRate.y) })
                         .frame(height: 100)
                 }.padding()
                 HStack {
                     Text("z").font(.headline)
-                    LineChart(
+                    SampleLineChart(
                         data: sample.entries.map { ($0.gyroData.timeSinceBoot, $0.gyroData.rotationRate.z) })
                         .frame(height: 100)
                 }.padding()

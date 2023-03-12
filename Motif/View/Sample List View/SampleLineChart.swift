@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LineChart: View {
+struct SampleLineChart: View {
     
     enum VerticalReference {
         case zero
@@ -121,7 +121,7 @@ struct LineChart: View {
     }
 }
 
-struct LineChart_Previews: PreviewProvider {
+struct SampleLineChart_Previews: PreviewProvider {
     
     static var data: [(Double, Double)] = [
         (1.0, 1.0),
@@ -134,8 +134,8 @@ struct LineChart_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            LineChart(data: data, verticalReference: .zero)
-            LineChart(data: data, verticalReference: .mean, strokeColor: .orange)
+            SampleLineChart(data: data, verticalReference: .zero)
+            SampleLineChart(data: data, verticalReference: .mean, strokeColor: .orange)
                 .colorScheme(.dark)
         }
     }
