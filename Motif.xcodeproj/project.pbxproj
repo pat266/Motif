@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		439A36B129BD85AA0007DAB2 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 439A36B029BD85AA0007DAB2 /* SwiftUICharts */; };
 		4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEA2435F501004FCBC3 /* GyroData.swift */; };
 		4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */; };
 		4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */; };
@@ -100,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439A36B129BD85AA0007DAB2 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +269,7 @@
 			);
 			name = Motif;
 			packageProductDependencies = (
+				439A36B029BD85AA0007DAB2 /* SwiftUICharts */,
 			);
 			productName = Motif;
 			productReference = 4CC980332430767400B36A7F /* Motif.app */;
@@ -341,6 +344,7 @@
 			);
 			mainGroup = 4CC9802A2430767400B36A7F;
 			packageReferences = (
+				439A36AF29BD85AA0007DAB2 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 			);
 			productRefGroup = 4CC980342430767400B36A7F /* Products */;
 			projectDirPath = "";
@@ -579,6 +583,7 @@
 				DEVELOPMENT_TEAM = C9872RD5XD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motif/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -599,6 +604,7 @@
 				DEVELOPMENT_TEAM = C9872RD5XD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motif/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,6 +740,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		439A36AF29BD85AA0007DAB2 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/willdale/SwiftUICharts";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		439A36B029BD85AA0007DAB2 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439A36AF29BD85AA0007DAB2 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CC9802B2430767400B36A7F /* Project object */;
 }

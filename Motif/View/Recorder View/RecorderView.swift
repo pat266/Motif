@@ -7,9 +7,7 @@
 
 import Combine
 import SwiftUI
-
-// https://github.com/AppPear/ChartView.git
-// import SwiftUICharts
+import SwiftUICharts
 
 struct RecorderView: View {
     
