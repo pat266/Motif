@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 
 // https://github.com/AppPear/ChartView.git
-import SwiftUICharts
+// import SwiftUICharts
 
 struct RecorderView: View {
     
@@ -62,20 +62,15 @@ struct RecorderView: View {
                 } else {
                     VStack {
                         if entry.accelerometerData != nil {
-//                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.accelerometerData.timestamp))
-//                            ItemRow(name: "x", value: "\(entry.accelerometerData.acceleration.x) G")
-//                            ItemRow(name: "y", value: "\(entry.accelerometerData.acceleration.y) G")
-//                            ItemRow(name: "z", value: "\(entry.accelerometerData.acceleration.z) G")
-//                            Spacer()
-                            MultiLineChartView(data:
-                                                [
-                                                    (recorder.accelerometerDataX, GradientColors.green),
-                                                    (recorder.accelerometerDataY, GradientColors.purple),
-                                                    (recorder.accelerometerDataZ, GradientColors.orange)
-                                                ],
-                                               title: "Accelerometer Graph",
-                                               form: ChartForm.extraLarge
-                            ).padding()
+//                            MultiLineChartView(data:
+//                                                [
+//                                                    (recorder.accelerometerDataX, GradientColors.green),
+//                                                    (recorder.accelerometerDataY, GradientColors.purple),
+//                                                    (recorder.accelerometerDataZ, GradientColors.orange)
+//                                                ],
+//                                               title: "Accelerometer Graph",
+//                                               form: ChartForm.extraLarge
+//                            ).padding()
                             
 //                            LineChartView(data: recorder.accelerometerDataX,
 //                                          title: "recorder.accelerometerDataX",
@@ -87,23 +82,17 @@ struct RecorderView: View {
                     
                     HStack {
                         if entry.gyroData != nil {
-//                            ItemRow(name: "timestamp", value: dateFormatter.string(from: entry.gyroData.timestamp))
-//                            ItemRow(name: "x", value: "\(entry.gyroData.rotationRate.x) rad/s")
-//                            ItemRow(name: "y", value: "\(entry.gyroData.rotationRate.y) rad/s")
-//                            ItemRow(name: "z", value: "\(entry.gyroData.rotationRate.z) rad/s")
-                            MultiLineChartView(data:
-                                                [
-                                                    (recorder.gyroscopeDataX, GradientColors.green),
-                                                    (recorder.gyroscopeDataY, GradientColors.purple),
-                                                    (recorder.gyroscopeDataZ, GradientColors.orange)
-                                                ],
-                                               title: "Gyroscope Graph",
-                                               form: ChartForm.extraLarge
-                            ).padding()
+//                            MultiLineChartView(data:
+//                                                [
+//                                                    (recorder.gyroscopeDataX, GradientColors.green),
+//                                                    (recorder.gyroscopeDataY, GradientColors.purple),
+//                                                    (recorder.gyroscopeDataZ, GradientColors.orange)
+//                                                ],
+//                                               title: "Gyroscope Graph",
+//                                               form: ChartForm.extraLarge
+//                            ).padding()
                         }
                     }
-                    
-                    
                 }
                 
                 // MARK: Start/Stop Button
