@@ -14,7 +14,7 @@
 		4C32B1272434DB8500A4120F /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B1262434DB8500A4120F /* ItemRow.swift */; };
 		4C32B12B2434F2D500A4120F /* CMLogItem+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B12A2434F2D500A4120F /* CMLogItem+Date.swift */; };
 		4C7979B3243ED33200B8460D /* SampleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7979B2243ED33200B8460D /* SampleDetailView.swift */; };
-		4C8EE925247CF55B00E4E2CE /* Preview Images in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE924247CF55B00E4E2CE /* Preview Images */; };
+		4C8EE925247CF55B00E4E2CE /* PreviewImages in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE924247CF55B00E4E2CE /* PreviewImages */; };
 		4C8EE928247CF6A800E4E2CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE926247CF6A800E4E2CE /* README.md */; };
 		4C8EE929247CF6A800E4E2CE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE927247CF6A800E4E2CE /* LICENSE */; };
 		4CA9C45B243626ED006E8F3B /* SampleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9C45A243626ED006E8F3B /* SampleRow.swift */; };
@@ -64,24 +64,24 @@
 		4C32B1262434DB8500A4120F /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		4C32B12A2434F2D500A4120F /* CMLogItem+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMLogItem+Date.swift"; sourceTree = "<group>"; };
 		4C7979B2243ED33200B8460D /* SampleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetailView.swift; sourceTree = "<group>"; };
-		4C8EE924247CF55B00E4E2CE /* Preview Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Images"; sourceTree = "<group>"; };
+		4C8EE924247CF55B00E4E2CE /* PreviewImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PreviewImages; sourceTree = "<group>"; };
 		4C8EE926247CF6A800E4E2CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		4C8EE927247CF6A800E4E2CE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		4CA9C45A243626ED006E8F3B /* SampleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRow.swift; sourceTree = "<group>"; };
 		4CA9C45C24362A64006E8F3B /* MotionDataSample+PreviewSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MotionDataSample+PreviewSamples.swift"; sourceTree = "<group>"; };
 		4CB205C624376A8A0065C6E3 /* ShareSampleActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSampleActivityView.swift; sourceTree = "<group>"; };
 		4CB205C824376CDF0065C6E3 /* FileManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+.swift"; sourceTree = "<group>"; };
-		4CC980332430767400B36A7F /* Motif.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motif.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CC980332430767400B36A7F /* PHL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC980362430767400B36A7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CC980382430767400B36A7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4CC9803C2430767600B36A7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CC9803F2430767600B36A7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4CC980422430767600B36A7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC980442430767600B36A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CC980492430767700B36A7F /* MotifTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotifTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CC980492430767700B36A7F /* PHLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PHLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC9804D2430767700B36A7F /* MotifTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotifTests.swift; sourceTree = "<group>"; };
 		4CC9804F2430767700B36A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CC980542430767700B36A7F /* MotifUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotifUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CC980542430767700B36A7F /* PHLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PHLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC980582430767700B36A7F /* MotifUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotifUITests.swift; sourceTree = "<group>"; };
 		4CC9805A2430767700B36A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CC980672430782700B36A7F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -166,10 +166,10 @@
 			children = (
 				4C8EE927247CF6A800E4E2CE /* LICENSE */,
 				4C8EE926247CF6A800E4E2CE /* README.md */,
-				4C8EE924247CF55B00E4E2CE /* Preview Images */,
-				4CC980352430767400B36A7F /* Motif */,
-				4CC9804C2430767700B36A7F /* MotifTests */,
-				4CC980572430767700B36A7F /* MotifUITests */,
+				4C8EE924247CF55B00E4E2CE /* PreviewImages */,
+				4CC980352430767400B36A7F /* PHL */,
+				4CC9804C2430767700B36A7F /* PHLTests */,
+				4CC980572430767700B36A7F /* PHLUITests */,
 				4CC980342430767400B36A7F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -177,14 +177,14 @@
 		4CC980342430767400B36A7F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4CC980332430767400B36A7F /* Motif.app */,
-				4CC980492430767700B36A7F /* MotifTests.xctest */,
-				4CC980542430767700B36A7F /* MotifUITests.xctest */,
+				4CC980332430767400B36A7F /* PHL.app */,
+				4CC980492430767700B36A7F /* PHLTests.xctest */,
+				4CC980542430767700B36A7F /* PHLUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4CC980352430767400B36A7F /* Motif */ = {
+		4CC980352430767400B36A7F /* PHL */ = {
 			isa = PBXGroup;
 			children = (
 				4CC980362430767400B36A7F /* AppDelegate.swift */,
@@ -196,7 +196,7 @@
 				4CC980442430767600B36A7F /* Info.plist */,
 				4CC9803E2430767600B36A7F /* Preview Content */,
 			);
-			path = Motif;
+			path = PHL;
 			sourceTree = "<group>";
 		};
 		4CC9803E2430767600B36A7F /* Preview Content */ = {
@@ -208,22 +208,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4CC9804C2430767700B36A7F /* MotifTests */ = {
+		4CC9804C2430767700B36A7F /* PHLTests */ = {
 			isa = PBXGroup;
 			children = (
 				4CC9804D2430767700B36A7F /* MotifTests.swift */,
 				4CC9804F2430767700B36A7F /* Info.plist */,
 			);
-			path = MotifTests;
+			path = PHLTests;
 			sourceTree = "<group>";
 		};
-		4CC980572430767700B36A7F /* MotifUITests */ = {
+		4CC980572430767700B36A7F /* PHLUITests */ = {
 			isa = PBXGroup;
 			children = (
 				4CC980582430767700B36A7F /* MotifUITests.swift */,
 				4CC9805A2430767700B36A7F /* Info.plist */,
 			);
-			path = MotifUITests;
+			path = PHLUITests;
 			sourceTree = "<group>";
 		};
 		4CC980662430781300B36A7F /* Model */ = {
@@ -253,9 +253,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4CC980322430767400B36A7F /* Motif */ = {
+		4CC980322430767400B36A7F /* PHL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CC9805D2430767700B36A7F /* Build configuration list for PBXNativeTarget "Motif" */;
+			buildConfigurationList = 4CC9805D2430767700B36A7F /* Build configuration list for PBXNativeTarget "PHL" */;
 			buildPhases = (
 				4CC9802F2430767400B36A7F /* Sources */,
 				4CC980302430767400B36A7F /* Frameworks */,
@@ -265,16 +265,16 @@
 			);
 			dependencies = (
 			);
-			name = Motif;
+			name = PHL;
 			packageProductDependencies = (
 			);
 			productName = Motif;
-			productReference = 4CC980332430767400B36A7F /* Motif.app */;
+			productReference = 4CC980332430767400B36A7F /* PHL.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4CC980482430767700B36A7F /* MotifTests */ = {
+		4CC980482430767700B36A7F /* PHLTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CC980602430767700B36A7F /* Build configuration list for PBXNativeTarget "MotifTests" */;
+			buildConfigurationList = 4CC980602430767700B36A7F /* Build configuration list for PBXNativeTarget "PHLTests" */;
 			buildPhases = (
 				4CC980452430767700B36A7F /* Sources */,
 				4CC980462430767700B36A7F /* Frameworks */,
@@ -285,14 +285,14 @@
 			dependencies = (
 				4CC9804B2430767700B36A7F /* PBXTargetDependency */,
 			);
-			name = MotifTests;
+			name = PHLTests;
 			productName = MotifTests;
-			productReference = 4CC980492430767700B36A7F /* MotifTests.xctest */;
+			productReference = 4CC980492430767700B36A7F /* PHLTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4CC980532430767700B36A7F /* MotifUITests */ = {
+		4CC980532430767700B36A7F /* PHLUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CC980632430767700B36A7F /* Build configuration list for PBXNativeTarget "MotifUITests" */;
+			buildConfigurationList = 4CC980632430767700B36A7F /* Build configuration list for PBXNativeTarget "PHLUITests" */;
 			buildPhases = (
 				4CC980502430767700B36A7F /* Sources */,
 				4CC980512430767700B36A7F /* Frameworks */,
@@ -303,9 +303,9 @@
 			dependencies = (
 				4CC980562430767700B36A7F /* PBXTargetDependency */,
 			);
-			name = MotifUITests;
+			name = PHLUITests;
 			productName = MotifUITests;
-			productReference = 4CC980542430767700B36A7F /* MotifUITests.xctest */;
+			productReference = 4CC980542430767700B36A7F /* PHLUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -331,7 +331,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4CC9802E2430767400B36A7F /* Build configuration list for PBXProject "Motif" */;
+			buildConfigurationList = 4CC9802E2430767400B36A7F /* Build configuration list for PBXProject "PHL" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -346,9 +346,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4CC980322430767400B36A7F /* Motif */,
-				4CC980482430767700B36A7F /* MotifTests */,
-				4CC980532430767700B36A7F /* MotifUITests */,
+				4CC980322430767400B36A7F /* PHL */,
+				4CC980482430767700B36A7F /* PHLTests */,
+				4CC980532430767700B36A7F /* PHLUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -362,7 +362,7 @@
 				4CC980432430767600B36A7F /* LaunchScreen.storyboard in Resources */,
 				4CC980402430767600B36A7F /* Preview Assets.xcassets in Resources */,
 				4C8EE928247CF6A800E4E2CE /* README.md in Resources */,
-				4C8EE925247CF55B00E4E2CE /* Preview Images in Resources */,
+				4C8EE925247CF55B00E4E2CE /* PreviewImages in Resources */,
 				4CC9803D2430767600B36A7F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,12 +434,12 @@
 /* Begin PBXTargetDependency section */
 		4CC9804B2430767700B36A7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4CC980322430767400B36A7F /* Motif */;
+			target = 4CC980322430767400B36A7F /* PHL */;
 			targetProxy = 4CC9804A2430767700B36A7F /* PBXContainerItemProxy */;
 		};
 		4CC980562430767700B36A7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4CC980322430767400B36A7F /* Motif */;
+			target = 4CC980322430767400B36A7F /* PHL */;
 			targetProxy = 4CC980552430767700B36A7F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -575,16 +575,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Motif/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PHL/Preview Content\"";
 				DEVELOPMENT_TEAM = C9872RD5XD;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Motif/Info.plist;
+				INFOPLIST_FILE = PHL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.Motif1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.PHL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -596,16 +596,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Motif/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PHL/Preview Content\"";
 				DEVELOPMENT_TEAM = C9872RD5XD;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Motif/Info.plist;
+				INFOPLIST_FILE = PHL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.Motif1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.PHL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -619,18 +619,18 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28872AG34;
-				INFOPLIST_FILE = MotifTests/Info.plist;
+				INFOPLIST_FILE = PHLTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.emus.MotifTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emus.PHLTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Motif.app/Motif";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PHL.app/PHL";
 			};
 			name = Debug;
 		};
@@ -641,18 +641,18 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28872AG34;
-				INFOPLIST_FILE = MotifTests/Info.plist;
+				INFOPLIST_FILE = PHLTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.emus.MotifTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emus.PHLTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Motif.app/Motif";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PHL.app/PHL";
 			};
 			name = Release;
 		};
@@ -662,17 +662,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28872AG34;
-				INFOPLIST_FILE = MotifUITests/Info.plist;
+				INFOPLIST_FILE = PHLUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.emus.MotifUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emus.PHLUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Motif;
+				TEST_TARGET_NAME = PHL;
 			};
 			name = Debug;
 		};
@@ -682,24 +682,24 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28872AG34;
-				INFOPLIST_FILE = MotifUITests/Info.plist;
+				INFOPLIST_FILE = PHLUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.emus.MotifUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emus.PHLUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Motif;
+				TEST_TARGET_NAME = PHL;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4CC9802E2430767400B36A7F /* Build configuration list for PBXProject "Motif" */ = {
+		4CC9802E2430767400B36A7F /* Build configuration list for PBXProject "PHL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CC9805B2430767700B36A7F /* Debug */,
@@ -708,7 +708,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CC9805D2430767700B36A7F /* Build configuration list for PBXNativeTarget "Motif" */ = {
+		4CC9805D2430767700B36A7F /* Build configuration list for PBXNativeTarget "PHL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CC9805E2430767700B36A7F /* Debug */,
@@ -717,7 +717,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CC980602430767700B36A7F /* Build configuration list for PBXNativeTarget "MotifTests" */ = {
+		4CC980602430767700B36A7F /* Build configuration list for PBXNativeTarget "PHLTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CC980612430767700B36A7F /* Debug */,
@@ -726,7 +726,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CC980632430767700B36A7F /* Build configuration list for PBXNativeTarget "MotifUITests" */ = {
+		4CC980632430767700B36A7F /* Build configuration list for PBXNativeTarget "PHLUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CC980642430767700B36A7F /* Debug */,

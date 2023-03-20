@@ -1,15 +1,10 @@
-# Motif
+# PHL - Passive Haptic Learning
 
-<img src="Preview%20Images/Icon.png" width=250 />
 
 A simple motion sensor data recorder for iPhone. Written with SwiftUI.
 
 ## Features
-✔️ Records sensor data from accelerometer, gyroscope and magnetometer
-
-✔️ Records both raw and processed data
-
-✔️ Up to thousands of data points per sample
+✔️ Records sensor data from accelerometer and gyroscope
 
 ✔️ Up to 200Hz sampling frequency (device-dependent)
 
@@ -20,20 +15,23 @@ A simple motion sensor data recorder for iPhone. Written with SwiftUI.
 ✔️ Purely Swift!
 
 ## Compatability
-Built on Xcode 11.3.1 and tested on iOS 13.3.1.
+Built on Xcode 14.2 and tested on iOS 16.0.
 
-## Todo
-- [ ] Timer (using CMSensorRecorder; accelerometer data only)
+<!-- ## Todo
+- [x] Timer (using CMSensorRecorder; accelerometer data only) -->
 
 ## License
 MIT license.
 
-## Previews
+## Citation
+App Icon: <a href="https://www.flaticon.com/free-icons/gloves" title="gloves icons">Gloves icons created by Freepik - Flaticon</a>
 
-<img src="Preview%20Images/Record.png" width=300 />
+<!-- ## Previews
 
-<img src="Preview%20Images/Recording.png" width=300 />
+<img src="PreviewImages/Record.png" width=300 />
 
-<img src="Preview%20Images/Samples.png" width=300 />
+<img src="PreviewImages/Recording.png" width=300 />
 
-<img src="Preview%20Images/Sample_Detail.jpg" width=300 />
+<img src="PreviewImages/Samples.png" width=300 />
+
+<img src="PreviewImages/Sample_Detail.jpg" width=300 /> -->
