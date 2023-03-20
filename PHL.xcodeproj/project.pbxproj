@@ -14,7 +14,7 @@
 		4C32B1272434DB8500A4120F /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B1262434DB8500A4120F /* ItemRow.swift */; };
 		4C32B12B2434F2D500A4120F /* CMLogItem+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32B12A2434F2D500A4120F /* CMLogItem+Date.swift */; };
 		4C7979B3243ED33200B8460D /* SampleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7979B2243ED33200B8460D /* SampleDetailView.swift */; };
-		4C8EE925247CF55B00E4E2CE /* Preview Images in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE924247CF55B00E4E2CE /* Preview Images */; };
+		4C8EE925247CF55B00E4E2CE /* PreviewImages in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE924247CF55B00E4E2CE /* PreviewImages */; };
 		4C8EE928247CF6A800E4E2CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE926247CF6A800E4E2CE /* README.md */; };
 		4C8EE929247CF6A800E4E2CE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EE927247CF6A800E4E2CE /* LICENSE */; };
 		4CA9C45B243626ED006E8F3B /* SampleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9C45A243626ED006E8F3B /* SampleRow.swift */; };
@@ -64,7 +64,7 @@
 		4C32B1262434DB8500A4120F /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		4C32B12A2434F2D500A4120F /* CMLogItem+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMLogItem+Date.swift"; sourceTree = "<group>"; };
 		4C7979B2243ED33200B8460D /* SampleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetailView.swift; sourceTree = "<group>"; };
-		4C8EE924247CF55B00E4E2CE /* Preview Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Images"; sourceTree = "<group>"; };
+		4C8EE924247CF55B00E4E2CE /* PreviewImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PreviewImages; sourceTree = "<group>"; };
 		4C8EE926247CF6A800E4E2CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		4C8EE927247CF6A800E4E2CE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		4CA9C45A243626ED006E8F3B /* SampleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRow.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 			children = (
 				4C8EE927247CF6A800E4E2CE /* LICENSE */,
 				4C8EE926247CF6A800E4E2CE /* README.md */,
-				4C8EE924247CF55B00E4E2CE /* Preview Images */,
+				4C8EE924247CF55B00E4E2CE /* PreviewImages */,
 				4CC980352430767400B36A7F /* PHL */,
 				4CC9804C2430767700B36A7F /* PHLTests */,
 				4CC980572430767700B36A7F /* PHLUITests */,
@@ -362,7 +362,7 @@
 				4CC980432430767600B36A7F /* LaunchScreen.storyboard in Resources */,
 				4CC980402430767600B36A7F /* Preview Assets.xcassets in Resources */,
 				4C8EE928247CF6A800E4E2CE /* README.md in Resources */,
-				4C8EE925247CF55B00E4E2CE /* Preview Images in Resources */,
+				4C8EE925247CF55B00E4E2CE /* PreviewImages in Resources */,
 				4CC9803D2430767600B36A7F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
