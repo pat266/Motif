@@ -14,7 +14,7 @@ import AudioToolbox.AudioServices
 class Recorder: ObservableObject {
     
     struct RecordSetting {
-        var samplingRate: Double = 20
+        var samplingRate: Double = 100
         var maxData: Int = 200
     }
     
