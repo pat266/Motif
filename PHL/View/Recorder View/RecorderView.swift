@@ -154,6 +154,7 @@ struct RecorderView: View {
                             .bold()
                             .animation(nil)
                     }
+                    .buttonStyle(.plain)
                     .toggleStyle(CircularToggleStyle(sideLength: 60))
                     .padding(10)
                     

@@ -68,7 +68,7 @@ class Recorder: ObservableObject {
         self.startHaptics()
         // How strong the haptic is (0 - 1)
         let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-        // supposed to be infinite, but I think the max is 10 seconds
+        // supposed to be infinite, but I think the max is 30 seconds
         let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
         self.playHaptic(event: hapticCustom)
         
