@@ -1,9 +1,3 @@
-//
-//  MotionDataSample+PreviewSamples.swift
-//
-//  Created by Pan Weiheng on 2020/4/2.
-//
-
 import Foundation
 
 #if DEBUG

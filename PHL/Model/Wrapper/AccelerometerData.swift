@@ -1,9 +1,3 @@
-//
-//  AccelerometerData.swift
-//
-//  Created by Pan Weiheng on 2020/4/2.
-//
-
 import CoreMotion
 
 struct AccelerometerData: Codable, Equatable, Hashable {

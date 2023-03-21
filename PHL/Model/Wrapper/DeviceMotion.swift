@@ -1,9 +1,3 @@
-//
-//  DeviceMotion.swift
-//
-//  Created by Pan Weiheng on 2020/4/2.
-//
-
 import CoreMotion
 
 struct DeviceMotion: Codable, Equatable, Hashable {

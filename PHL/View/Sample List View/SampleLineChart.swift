@@ -1,9 +1,3 @@
-//
-//  LineChart.swift
-//
-//  Created by Pan Weiheng on 2020/4/8.
-//
-
 import SwiftUI
 
 struct SampleLineChart: View {

@@ -1,9 +1,3 @@
-//
-//  SampleListView.swift
-//
-//  Created by Pan Weiheng on 2020/3/29.
-//
-
 import SwiftUI
 
 struct SampleListView: View {

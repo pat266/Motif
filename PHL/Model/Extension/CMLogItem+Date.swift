@@ -1,9 +1,3 @@
-//
-//  CMLogItem+Date.swift
-//
-//  Created by Pan Weiheng on 2020/4/2.
-//
-
 import CoreMotion
 import QuartzCore
 

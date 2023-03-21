@@ -1,9 +1,3 @@
-//
-//  ItemRow.swift
-//
-//  Created by Pan Weiheng on 2020/4/1.
-//
-
 import SwiftUI
 
 struct ItemRow: View {

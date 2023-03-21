@@ -1,9 +1,3 @@
-//
-//  SampleDetailView.swift
-//
-//  Created by Pan Weiheng on 2020/4/9.
-//
-
 import SwiftUI
 
 struct SampleDetailView: View {

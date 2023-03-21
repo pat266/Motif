@@ -1,9 +1,3 @@
-//
-//  CSVContainer.swift
-//
-//  Created by Pan Weiheng on 2020/3/30.
-//
-
 import Foundation
 
 class CSVContainer {

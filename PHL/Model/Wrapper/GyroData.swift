@@ -1,9 +1,3 @@
-//
-//  GyroData.swift
-//
-//  Created by Pan Weiheng on 2020/4/2.
-//
-
 import CoreMotion
 
 struct GyroData: Codable, Equatable, Hashable {

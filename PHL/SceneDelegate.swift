@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//
-//  Created by Pan Weiheng on 2020/3/29.
-//
-
 import UIKit
 import SwiftUI
 

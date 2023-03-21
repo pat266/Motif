@@ -1,8 +1,3 @@
-//
-//  Recorder.swift
-//
-//
-
 import Foundation
 import Combine
 import CoreMotion // for accelerator and gyroscope
@@ -22,7 +17,8 @@ class Recorder: ObservableObject {
     private let manager = CMMotionManager()
     private var engine: CHHapticEngine?
     private let haveStarted: Bool = false // boolean for vibration check
-    private var timerSubscription: AnyCancellable? = nil
+    private var timerUpdate: AnyCancellable? = nil // timer to update data
+    private var timerVibration: AnyCancellable? = nil // timer to renew vibration
     var samplingInterval: Double { 1.0 / setting.samplingRate }
     
     @Published var setting: Recorder.RecordSetting = RecordSetting()
@@ -73,9 +69,22 @@ class Recorder: ObservableObject {
         self.startHaptics()
         // How strong the haptic is (0 - 1)
         let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-        // supposed to be infinite, but I think the max is 10 seconds
+        // supposed to be infinite, but I think the max is 30 seconds
         let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
         self.playHaptic(event: hapticCustom)
+        
+        // Activate the vibration timer every second
+        timerVibration = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { date in
+                // Vibrate the device
+                self.startHaptics()
+                // How strong the haptic is (0 - 1)
+                let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+                // supposed to be infinite, but I think the max is 30 seconds
+                let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
+                self.playHaptic(event: hapticCustom)
+        }
         
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval
@@ -89,7 +98,7 @@ class Recorder: ObservableObject {
         currentDataRecord = MotionDataSample(startTime: Date(), samplingRate: setting.samplingRate)
         
         // Activate timer
-        timerSubscription = Timer.publish(every: samplingInterval, on: .main, in: .common)
+        timerUpdate = Timer.publish(every: samplingInterval, on: .main, in: .common)
             .autoconnect()
             .sink { date in
                 guard let accelerometerData = self.manager.accelerometerData,
@@ -115,7 +124,8 @@ class Recorder: ObservableObject {
         guard manager.isDeviceAvailable == true else { return }
         
         // Invalidate timer
-        timerSubscription?.cancel()
+        timerUpdate?.cancel()
+        timerVibration?.cancel()
         
         // Stop data updates
         manager.stopAccelerometerUpdates()
