@@ -24,8 +24,8 @@ struct MotionDataSample: Codable, Equatable, Hashable, Identifiable {
         (\MotionDataSample.samplingRate,    "samplingRate"),
         (\MotionDataSample.deviceModel,     "deviceModel")
     ]
-    static let metadataKeyPaths = Self.keyPathsAndTitles.map { $0.0 }
-    static let metadataTitles = Self.keyPathsAndTitles.map { $0.1 }
+    static let metadataKeyPaths: [PartialKeyPath<MotionDataSample>] = Self.keyPathsAndTitles.map { $0.0 }
+    static let metadataTitles: [String] = Self.keyPathsAndTitles.map { $0.1 }
     static let dataKeyPaths = MotionDataEntry.keyPathsAndTitles.map { $0.0 }
     static let dataTitles = MotionDataEntry.keyPathsAndTitles.map { $0.1 }
     
@@ -56,15 +56,15 @@ struct MotionDataSample: Codable, Equatable, Hashable, Identifiable {
     }
     
     func encodeToCSV() -> String {
-        let delimiter = ","
+        let delimiter: String = ","
         let titles = ["No"] + Self.metadataTitles + Self.dataTitles
         let container = CSVContainer(titles: titles, delimiter: delimiter)
         
         for (index, data) in entries.enumerated() {
-            var row = [String]()
+            var row: [String] = [String]()
             
             row.append(String(index + 1))
-            for keyPath in Self.metadataKeyPaths {
+            for keyPath: PartialKeyPath<MotionDataSample> in Self.metadataKeyPaths {
                 row.append(stringFlatten(self[keyPath: keyPath]))
             }
             for keyPath in Self.dataKeyPaths {
@@ -78,10 +78,10 @@ struct MotionDataSample: Codable, Equatable, Hashable, Identifiable {
     }
     
     private func stringFlatten(_ input: Any) -> String {
-        var string = String(describing: input)
+        var string: String = String(describing: input)
         
         // Remove "Optional()"
-        let prefix = "Optional(", suffix = ")"
+        let prefix: String = "Optional(", suffix: String = ")"
         if string.hasPrefix(prefix) && string.hasSuffix(suffix) {
             string.removeFirst(prefix.count)
             string.removeLast(suffix.count)

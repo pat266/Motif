@@ -9,8 +9,8 @@ import SwiftUI
 struct SampleDetailView: View {
     var sample: MotionDataSample
     
-    @State var isShowingShareActionSheet = false
-    @State var isShowingShareActivitySheet = false
+    @State var isShowingShareActionSheet: Bool = false
+    @State var isShowingShareActivitySheet: Bool = false
     @State var shareActivitySheetFileFormat: ShareSampleActivityView.FileFormat = .csv
     
     let dateFormatter: DateFormatter = {
