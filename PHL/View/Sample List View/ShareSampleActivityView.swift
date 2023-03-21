@@ -1,9 +1,3 @@
-//
-//  ShareSampleActivityView.swift
-//
-//  Created by Pan Weiheng on 2020/4/3.
-//
-
 import SwiftUI
 
 struct ShareSampleActivityView: UIViewControllerRepresentable {

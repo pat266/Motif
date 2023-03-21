@@ -1,8 +1,3 @@
-//
-//  Recorder.swift
-//
-//
-
 import Foundation
 import Combine
 import CoreMotion // for accelerator and gyroscope

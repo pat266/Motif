@@ -1,9 +1,3 @@
-//
-//  MotionDataEntry.swift
-//
-//  Created by Pan Weiheng on 2020/4/1.
-//
-
 import CoreMotion
 
 struct MotionDataEntry: Codable, Equatable, Hashable, Identifiable {

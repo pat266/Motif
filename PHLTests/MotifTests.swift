@@ -1,13 +1,7 @@
-//
-//  MotifTests.swift
-//
-//  Created by Pan Weiheng on 2020/3/29.
-//
-
 import XCTest
-@testable import Motif
+@testable import PHL
 
-class MotifTests: XCTestCase {
+class PHLTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
