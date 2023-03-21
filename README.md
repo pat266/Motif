@@ -9,3 +9,7 @@ Built on Xcode 14.2 and tested on iOS 16.0.
 
 ## License
 MIT license.
+
+## Current Problems
+- Phone vibrating too long causes inconsistent force (overheated?!)
+- 
