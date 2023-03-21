@@ -1,6 +1,5 @@
 //
 //  SampleListView.swift
-//  Motif
 //
 //  Created by Pan Weiheng on 2020/3/29.
 //
@@ -12,8 +11,8 @@ struct SampleListView: View {
     @EnvironmentObject var recorder: Recorder
     
     @State var editMode: EditMode = .inactive
-    @State var isShowingShareActionSheet = false
-    @State var isShowingShareActivitySheet = false
+    @State var isShowingShareActionSheet: Bool = false
+    @State var isShowingShareActivitySheet: Bool = false
     @State var shareActivitySheetFileFormat: ShareSampleActivityView.FileFormat = .csv
     @State var selectedID = Set<UUID>()
     

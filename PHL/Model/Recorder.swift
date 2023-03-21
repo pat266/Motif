@@ -1,6 +1,5 @@
 //
 //  Recorder.swift
-//  Motif
 //
 //
 
@@ -22,12 +21,12 @@ class Recorder: ObservableObject {
     private let decoder = JSONDecoder()
     private let manager = CMMotionManager()
     private var engine: CHHapticEngine?
-    private let haveStarted = false // boolean for vibration check
+    private let haveStarted: Bool = false // boolean for vibration check
     private var timerSubscription: AnyCancellable? = nil
     var samplingInterval: Double { 1.0 / setting.samplingRate }
     
-    @Published var setting = RecordSetting()
-    @Published var isRecording = false {
+    @Published var setting: Recorder.RecordSetting = RecordSetting()
+    @Published var isRecording: Bool = false {
         willSet {
             newValue ? startRecording() : stopRecording()
         }
@@ -48,7 +47,7 @@ class Recorder: ObservableObject {
     @Published var gyroscopeDataY: [Double] = []
     @Published var gyroscopeDataZ: [Double] = []
     
-    private let sampleListFileName = "sampleList.json"
+    private let sampleListFileName: String = "sampleList.json"
     private var sampleListFileURL: URL {
         FileManager.default.documentDirectoryURL(appending: sampleListFileName)
     }

@@ -18,12 +18,11 @@ struct RecorderView: View {
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
     }
     
-    private var maxData = 200
+    private var maxData: Int = 200
     
     @State var timerSubscription: Timer?
     
     var body: some View {
-        
         
          NavigationView {
             
@@ -43,7 +42,6 @@ struct RecorderView: View {
                     // clear array whenever it stops recording
                     let _ = recorder.clearAccelerometerArray()
                     let _ = recorder.clearGyroscopeArray()
-                    
                     
                 } else {
                     VStack {
@@ -142,15 +140,6 @@ struct RecorderView: View {
                                 .chartXAxis(.hidden)
                                 .padding(.horizontal)
                             }
-//                            MultiLineChartView(data:
-//                                                [
-//                                                    (recorder.gyroscopeDataX, GradientColors.green),
-//                                                    (recorder.gyroscopeDataY, GradientColors.purple),
-//                                                    (recorder.gyroscopeDataZ, GradientColors.orange)
-//                                                ],
-//                                               title: "Gyroscope Graph",
-//                                               form: ChartForm.extraLarge
-//                            ).padding()
                         }
                     }
                 }

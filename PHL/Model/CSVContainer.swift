@@ -1,6 +1,5 @@
 //
 //  CSVContainer.swift
-//  Motif
 //
 //  Created by Pan Weiheng on 2020/3/30.
 //
@@ -33,7 +32,7 @@ class CSVContainer {
     }
     
     func addRow(_ row: [CustomStringConvertible]) throws {
-        let rowString = row.map { String(describing: $0) }
+        let rowString: [String] = row.map { String(describing: $0) }
         try addRow(rowString)
     }
     

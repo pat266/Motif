@@ -1,6 +1,5 @@
 //
 //  LineChart.swift
-//  Motif
 //
 //  Created by Pan Weiheng on 2020/4/8.
 //
@@ -72,11 +71,11 @@ struct SampleLineChart: View {
             if self.data.count <= 1 {
                 return 0
             }
-            let min = self.data.map { $0.0 }.min()!
-            let max = self.data.map { $0.0 }.max()!
+            let min: Double = self.data.map { $0.0 }.min()!
+            let max: Double = self.data.map { $0.0 }.max()!
             return geometry.frame(in: .local).size.width / CGFloat(max - min)
         }()
-        let firstComponentMin = self.data.map { $0.0 }.min()!
+        let firstComponentMin: Double = self.data.map { $0.0 }.min()!
         let frameHeight = geometry.frame(in: .local).size.height
         let dy = frameHeight * 0.5
         
@@ -104,8 +103,8 @@ struct SampleLineChart: View {
             
         case .mean:
             
-            let secondComponentMin = self.data.map { $0.1 }.min()!
-            let secondComponentMax = self.data.map { $0.1 }.max()!
+            let secondComponentMin: Double = self.data.map { $0.1 }.min()!
+            let secondComponentMax: Double = self.data.map { $0.1 }.max()!
             if secondComponentMax == secondComponentMin {
                 heightPerUnit = .zero
             } else {
