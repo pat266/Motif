@@ -1,6 +1,5 @@
 //
 //  MotifTests.swift
-//  MotifTests
 //
 //  Created by Pan Weiheng on 2020/3/29.
 //

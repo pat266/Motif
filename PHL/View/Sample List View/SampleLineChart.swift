@@ -1,6 +1,5 @@
 //
 //  LineChart.swift
-//  Motif
 //
 //  Created by Pan Weiheng on 2020/4/8.
 //

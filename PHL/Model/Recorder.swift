@@ -1,6 +1,5 @@
 //
 //  Recorder.swift
-//  Motif
 //
 //
 

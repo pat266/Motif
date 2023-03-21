@@ -1,6 +1,5 @@
 //
 //  SceneDelegate.swift
-//  Motif
 //
 //  Created by Pan Weiheng on 2020/3/29.
 //
