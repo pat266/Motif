@@ -43,6 +43,8 @@ class Recorder: ObservableObject {
     @Published var gyroscopeDataY: [Double] = []
     @Published var gyroscopeDataZ: [Double] = []
     
+    @Published var angle_degree: Double = 0
+    
     private let sampleListFileName: String = "sampleList.json"
     private var sampleListFileURL: URL {
         FileManager.default.documentDirectoryURL(appending: sampleListFileName)
@@ -68,7 +70,7 @@ class Recorder: ObservableObject {
         // Vibrate the device
         self.startHaptics()
         // How strong the haptic is (0 - 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.0)
         // supposed to be infinite, but I think the max is 30 seconds
         let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
         self.playHaptic(event: hapticCustom)
@@ -78,12 +80,7 @@ class Recorder: ObservableObject {
             .autoconnect()
             .sink { date in
                 // Vibrate the device
-                self.startHaptics()
-                // How strong the haptic is (0 - 1)
-                let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-                // supposed to be infinite, but I think the max is 30 seconds
-                let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
-                self.playHaptic(event: hapticCustom)
+                
         }
         
         // Set sampling intervals
@@ -113,8 +110,7 @@ class Recorder: ObservableObject {
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
                 
                 self.updateData(accelerometerData:accelerometerData, gyroData:gyroData)
-                
-                
+
         }
         
     }
@@ -170,6 +166,10 @@ class Recorder: ObservableObject {
             self.gyroscopeDataY.removeFirst()
             self.gyroscopeDataZ.removeFirst()
         }
+        
+        angle_degree = Angle.calculatePhoneAngle(x_accelerometer: accelerometerData.acceleration.x,
+                                                 y_accelerometer: accelerometerData.acceleration.y,
+                                                 z_accelerometer: accelerometerData.acceleration.z)
     }
 
     private func saveSampleListToDisk() {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */; };
+		439A36BA29D39FF10007DAB2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B929D39FF10007DAB2 /* Angle.swift */; };
 		4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEA2435F501004FCBC3 /* GyroData.swift */; };
 		4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */; };
 		4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLineChart.swift; sourceTree = "<group>"; };
+		439A36B929D39FF10007DAB2 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		4C103AEA2435F501004FCBC3 /* GyroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroData.swift; sourceTree = "<group>"; };
 		4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnetometerData.swift; sourceTree = "<group>"; };
 		4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMotion.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		439A36B829D39FBA0007DAB2 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				439A36B929D39FF10007DAB2 /* Angle.swift */,
+			);
+			path = Calculation;
+			sourceTree = "<group>";
+		};
 		4C103AF024360E35004FCBC3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 			children = (
 				4CC980362430767400B36A7F /* AppDelegate.swift */,
 				4CC980382430767400B36A7F /* SceneDelegate.swift */,
+				439A36B829D39FBA0007DAB2 /* Calculation */,
 				4CC980662430781300B36A7F /* Model */,
 				4CA9C45924362654006E8F3B /* View */,
 				4CC9803C2430767600B36A7F /* Assets.xcassets */,
@@ -408,6 +419,7 @@
 				4CD2793A2435CC0A0037E529 /* MotionDataSample.swift in Sources */,
 				4CD2793C2435CF210037E529 /* UIDevice+Model.swift in Sources */,
 				4CC980682430782700B36A7F /* Home.swift in Sources */,
+				439A36BA29D39FF10007DAB2 /* Angle.swift in Sources */,
 				4C32B1272434DB8500A4120F /* ItemRow.swift in Sources */,
 				4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */,
 			);
@@ -584,7 +596,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.PHL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.PHL1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -605,7 +617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.PHL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.PHL1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
