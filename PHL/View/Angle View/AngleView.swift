@@ -6,7 +6,9 @@
 //  Copyright © 2023 PAN Weiheng. All rights reserved.
 //
 
+import Combine
 import SwiftUI
+import Charts
 
 struct AngleView: View {
     
@@ -61,7 +63,13 @@ struct AngleView: View {
 }
 
 struct AngleView_Previews: PreviewProvider {
+    static let myEnvObject = Recorder()
     static var previews: some View {
         AngleView()
+            .environmentObject(myEnvObject)
+        
+        AngleView()
+            .environmentObject(myEnvObject)
+            .colorScheme(.dark)
     }
 }
