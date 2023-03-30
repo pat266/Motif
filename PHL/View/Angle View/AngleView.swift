@@ -30,7 +30,13 @@ struct AngleView: View {
                     let _ = recorder.clearGyroscopeArray()
                     
                 } else {
-                    Text(String(format: "%.0f", recorder.angle_degree)).padding() // angle
+                    HStack {
+                        Text(String(format: "%.0f", recorder.angle_degree))
+                            .font(.custom("default", size: 48))
+                            .fontWeight(.bold)
+                            .frame(alignment: .center)// angle
+                    }
+                    
                 }
                 
                 // MARK: Start/Stop Button
