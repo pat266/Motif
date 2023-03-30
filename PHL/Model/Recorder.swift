@@ -43,6 +43,8 @@ class Recorder: ObservableObject {
     @Published var gyroscopeDataY: [Double] = []
     @Published var gyroscopeDataZ: [Double] = []
     
+    @Published var angle_degree: Double = 0
+    
     private let sampleListFileName: String = "sampleList.json"
     private var sampleListFileURL: URL {
         FileManager.default.documentDirectoryURL(appending: sampleListFileName)
@@ -65,26 +67,8 @@ class Recorder: ObservableObject {
     private func startRecording() {
         guard manager.isDeviceAvailable == true else { return }
         
-        // Vibrate the device
-        self.startHaptics()
-        // How strong the haptic is (0 - 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-        // supposed to be infinite, but I think the max is 30 seconds
-        let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
-        self.playHaptic(event: hapticCustom)
-        
-        // Activate the vibration timer every second
-        timerVibration = Timer.publish(every: 1, on: .main, in: .common)
-            .autoconnect()
-            .sink { date in
-                // Vibrate the device
-                self.startHaptics()
-                // How strong the haptic is (0 - 1)
-                let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-                // supposed to be infinite, but I think the max is 30 seconds
-                let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
-                self.playHaptic(event: hapticCustom)
-        }
+        // start vibrating
+        self.vibrateIndefinitely()
         
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval
@@ -113,8 +97,7 @@ class Recorder: ObservableObject {
                 self.currentDataRecord?.addEntry(self.currentDataEntry)
                 
                 self.updateData(accelerometerData:accelerometerData, gyroData:gyroData)
-                
-                
+
         }
         
     }
@@ -170,6 +153,10 @@ class Recorder: ObservableObject {
             self.gyroscopeDataY.removeFirst()
             self.gyroscopeDataZ.removeFirst()
         }
+        
+        angle_degree = Angle.calculatePhoneAngle(x_accelerometer: accelerometerData.acceleration.x,
+                                                 y_accelerometer: accelerometerData.acceleration.y,
+                                                 z_accelerometer: accelerometerData.acceleration.z)
     }
 
     private func saveSampleListToDisk() {
@@ -300,6 +287,28 @@ class Recorder: ObservableObject {
         }
     }
     
+    func vibrateIndefinitely() {
+        // start up the vibration
+        self.startHaptics()
+        // How strong the haptic is (0 - 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        // supposed to be infinite, but I think the max is 30 seconds
+        let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
+        self.playHaptic(event: hapticCustom)
+        
+        // Activate the vibration timer every second
+        timerVibration = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { date in
+                // Vibrate the device
+                self.startHaptics()
+                // How strong the haptic is (0 - 1)
+                let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+                // supposed to be infinite, but I think the max is 30 seconds
+                let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
+                self.playHaptic(event: hapticCustom)
+        }
+    }
 }
 
 extension CMMotionManager {
