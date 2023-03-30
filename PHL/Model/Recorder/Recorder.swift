@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 import CoreMotion // for accelerator and gyroscope
-import CoreHaptics // for vibration
 import AudioToolbox.AudioServices
 
 
@@ -15,7 +14,6 @@ class Recorder: ObservableObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     private let manager = CMMotionManager()
-    private let vibrator = Vibrator()
     
     private let haveStarted: Bool = false // boolean for vibration check
     private var timerUpdate: AnyCancellable? = nil // timer to update data
@@ -67,9 +65,6 @@ class Recorder: ObservableObject {
     internal func startRecording() {
         guard manager.isDeviceAvailable == true else { return }
         
-        // start vibrating
-        vibrator.vibrateIndefinitely()
-        
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval
         manager.gyroUpdateInterval          = samplingInterval
@@ -112,9 +107,6 @@ class Recorder: ObservableObject {
         // Stop data updates
         manager.stopAccelerometerUpdates()
         manager.stopGyroUpdates()
-        
-        // cancel the vibration
-        vibrator.stopHaptics()
         
         // Add new record to record list
         guard let record = currentDataRecord else { return }
