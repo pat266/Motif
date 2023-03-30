@@ -114,7 +114,7 @@ class Recorder: ObservableObject {
         manager.stopAccelerometerUpdates()
         manager.stopGyroUpdates()
         
-        // cancel the vibratino
+        // cancel the vibration
         self.stopHaptics()
         
         // Add new record to record list
