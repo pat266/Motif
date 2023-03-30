@@ -12,6 +12,11 @@ struct Home: View {
                 Text("Record")
             }
             
+            AngleView().tabItem {
+                Image(systemName: "iphone.gen1.radiowaves.left.and.right")
+                Text("Angle")
+            }
+            
             SampleListView().tabItem {
                 Image(systemName: "list.bullet")
                 Text("Samples")
