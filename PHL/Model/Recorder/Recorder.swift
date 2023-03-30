@@ -15,10 +15,11 @@ class Recorder: ObservableObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     private let manager = CMMotionManager()
-    private var engine: CHHapticEngine?
+    private let vibrator = Vibrator()
+    
     private let haveStarted: Bool = false // boolean for vibration check
     private var timerUpdate: AnyCancellable? = nil // timer to update data
-    private var timerVibration: AnyCancellable? = nil // timer to renew vibration
+    
     var samplingInterval: Double { 1.0 / setting.samplingRate }
     
     @Published var setting: Recorder.RecordSetting = RecordSetting()
@@ -54,21 +55,20 @@ class Recorder: ObservableObject {
     
     init() {
         loadSampleListFromDisk()
-        self.initHaptic()
     }
     
     // MARK: - De-Initializer
     deinit {
-        self.destroyHaptics()
+        
     }
 
     // MARK: - Methods
     
-    private func startRecording() {
+    internal func startRecording() {
         guard manager.isDeviceAvailable == true else { return }
         
         // start vibrating
-        self.vibrateIndefinitely()
+        vibrator.vibrateIndefinitely()
         
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval
@@ -102,20 +102,19 @@ class Recorder: ObservableObject {
         
     }
     
-    private func stopRecording() {
+    internal func stopRecording() {
         
         guard manager.isDeviceAvailable == true else { return }
         
         // Invalidate timer
         timerUpdate?.cancel()
-        timerVibration?.cancel()
         
         // Stop data updates
         manager.stopAccelerometerUpdates()
         manager.stopGyroUpdates()
         
         // cancel the vibration
-        self.stopHaptics()
+        vibrator.stopHaptics()
         
         // Add new record to record list
         guard let record = currentDataRecord else { return }
@@ -209,6 +208,8 @@ class Recorder: ObservableObject {
         samples = list
     }
     
+    // MARK: - Clear the data
+    
     public func clearAccelerometerArray() {
         if (!self.accelerometerDataX.isEmpty) {
             self.accelerometerDataX.removeAll()
@@ -230,83 +231,6 @@ class Recorder: ObservableObject {
         }
         if (!gyroscopeDataZ.isEmpty) {
             self.gyroscopeDataZ.removeAll()
-        }
-    }
-    
-    // MARK: - Vibration Methods
-    func initHaptic() {
-        // check device support
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
-        }
-    }
-    
-    func startHaptics() {
-        do {
-            try engine?.start()
-        } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
-        }
-    }
-    
-    func stopHaptics() {
-        engine?.stop()
-    }
-
-    func destroyHaptics() {
-        // The engine stopped; print out why
-        engine?.stoppedHandler = { reason in
-            print("The engine stopped: \(reason)")
-        }
-
-        // If something goes wrong, attempt to restart the engine immediately
-        engine?.resetHandler = { [weak self] in
-            print("The engine reset")
-
-            do {
-                try self?.engine?.start()
-            } catch {
-                print("Failed to restart the engine: \(error)")
-            }
-        }
-    }
-    
-    func playHaptic(event: CHHapticEvent) {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        do {
-            let pattern = try CHHapticPattern(events: [event], parameters: [])
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            print("Failed to play pattern: \(error.localizedDescription).")
-        }
-    }
-    
-    func vibrateIndefinitely() {
-        // start up the vibration
-        self.startHaptics()
-        // How strong the haptic is (0 - 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-        // supposed to be infinite, but I think the max is 30 seconds
-        let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
-        self.playHaptic(event: hapticCustom)
-        
-        // Activate the vibration timer every second
-        timerVibration = Timer.publish(every: 1, on: .main, in: .common)
-            .autoconnect()
-            .sink { date in
-                // Vibrate the device
-                self.startHaptics()
-                // How strong the haptic is (0 - 1)
-                let sharpness = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-                // supposed to be infinite, but I think the max is 30 seconds
-                let hapticCustom = CHHapticEvent(eventType: .hapticContinuous, parameters: [ sharpness], relativeTime: 0, duration: .infinity)
-                self.playHaptic(event: hapticCustom)
         }
     }
 }

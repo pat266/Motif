@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		433E209D29D5DEBB003C97EB /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E209C29D5DEBB003C97EB /* Vibrator.swift */; };
+		433E20A029D5E27F003C97EB /* RecorderVibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E209F29D5E27F003C97EB /* RecorderVibrate.swift */; };
 		439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */; };
 		439A36C029D5367B0007DAB2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36BF29D5367B0007DAB2 /* Angle.swift */; };
 		439A36C329D5C4C20007DAB2 /* AngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36C229D5C4C20007DAB2 /* AngleView.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		433E209C29D5DEBB003C97EB /* Vibrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibrator.swift; sourceTree = "<group>"; };
+		433E209F29D5E27F003C97EB /* RecorderVibrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderVibrate.swift; sourceTree = "<group>"; };
 		439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLineChart.swift; sourceTree = "<group>"; };
 		439A36BF29D5367B0007DAB2 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		439A36C229D5C4C20007DAB2 /* AngleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		433E209E29D5E22B003C97EB /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				4CD57F0E2434B8C50007C963 /* Recorder.swift */,
+				433E209F29D5E27F003C97EB /* RecorderVibrate.swift */,
+			);
+			path = Recorder;
+			sourceTree = "<group>";
+		};
 		439A36BE29D536640007DAB2 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +264,7 @@
 		4CC980662430781300B36A7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4CD57F0E2434B8C50007C963 /* Recorder.swift */,
+				433E209E29D5E22B003C97EB /* Recorder */,
 				433E209C29D5DEBB003C97EB /* Vibrator.swift */,
 				4CD279392435CC0A0037E529 /* MotionDataSample.swift */,
 				4CE0CBB02434D4DA00494CD8 /* MotionDataEntry.swift */,
@@ -436,6 +447,7 @@
 				4CC980682430782700B36A7F /* Home.swift in Sources */,
 				439A36C329D5C4C20007DAB2 /* AngleView.swift in Sources */,
 				439A36C029D5367B0007DAB2 /* Angle.swift in Sources */,
+				433E20A029D5E27F003C97EB /* RecorderVibrate.swift in Sources */,
 				4C32B1272434DB8500A4120F /* ItemRow.swift in Sources */,
 				4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */,
 			);
