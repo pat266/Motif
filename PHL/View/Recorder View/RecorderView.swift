@@ -4,8 +4,8 @@ import Charts
 
 struct RecorderView: View {
     
-    @EnvironmentObject var recorder: Recorder
-    var entry: MotionDataEntry { recorder.currentDataEntry }
+    @EnvironmentObject var recorderVibrate: RecorderVibrate
+    var entry: MotionDataEntry { recorderVibrate.currentDataEntry }
         
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -27,7 +27,7 @@ struct RecorderView: View {
          NavigationView {
             
             Form {
-                if recorder.isRecording == false {
+                if recorderVibrate.isRecording == false {
                     
                     Section {
                         ItemRow(
@@ -35,20 +35,20 @@ struct RecorderView: View {
                                 Image(systemName: "speedometer")
                                 Text("Sampling Rate")
                             },
-                            valueView: Text("\(Int(recorder.setting.samplingRate)) Hz"))
-                        Slider(value: $recorder.setting.samplingRate, in: 1 ... 200, step: 1)
+                            valueView: Text("\(Int(recorderVibrate.setting.samplingRate)) Hz"))
+                        Slider(value: $recorderVibrate.setting.samplingRate, in: 1 ... 200, step: 1)
                     }
                     
                     // clear array whenever it stops recording
-                    let _ = recorder.clearAccelerometerArray()
-                    let _ = recorder.clearGyroscopeArray()
+                    let _ = recorderVibrate.clearAccelerometerArray()
+                    let _ = recorderVibrate.clearGyroscopeArray()
                     
                 } else {
                     VStack {
                         if entry.accelerometerData != nil {
                             GroupBox("Accelerometer X") {
                                 Chart {
-                                    ForEach(Array(recorder.accelerometerDataX.enumerated()), id: \.element) { index, number in
+                                    ForEach(Array(recorderVibrate.accelerometerDataX.enumerated()), id: \.element) { index, number in
                                         LineMark(
                                             x: .value("index", index),
                                             y: .value("value", number)
@@ -63,7 +63,7 @@ struct RecorderView: View {
                             
                             GroupBox("Accelerometer Y") {
                                 Chart {
-                                    ForEach(Array(recorder.accelerometerDataY.enumerated()), id: \.element) { index, number in
+                                    ForEach(Array(recorderVibrate.accelerometerDataY.enumerated()), id: \.element) { index, number in
                                         LineMark(
                                             x: .value("index", index),
                                             y: .value("value", number)
@@ -78,7 +78,7 @@ struct RecorderView: View {
                             
                             GroupBox("Accelerometer Z") {
                                 Chart {
-                                    ForEach(Array(recorder.accelerometerDataZ.enumerated()), id: \.element) { index, number in
+                                    ForEach(Array(recorderVibrate.accelerometerDataZ.enumerated()), id: \.element) { index, number in
                                         LineMark(
                                             x: .value("index", index),
                                             y: .value("value", number)
@@ -98,7 +98,7 @@ struct RecorderView: View {
                         if entry.gyroData != nil {
                             GroupBox("Gyroscope X") {
                                 Chart {
-                                    ForEach(Array(recorder.gyroscopeDataX.enumerated()), id: \.element) { index, number in
+                                    ForEach(Array(recorderVibrate.gyroscopeDataX.enumerated()), id: \.element) { index, number in
                                         LineMark(
                                             x: .value("index", index),
                                             y: .value("value", number)
@@ -113,7 +113,7 @@ struct RecorderView: View {
                             
                             GroupBox("Gyroscope Y") {
                                 Chart {
-                                    ForEach(Array(recorder.gyroscopeDataY.enumerated()), id: \.element) { index, number in
+                                    ForEach(Array(recorderVibrate.gyroscopeDataY.enumerated()), id: \.element) { index, number in
                                         LineMark(
                                             x: .value("index", index),
                                             y: .value("value", number)
@@ -128,7 +128,7 @@ struct RecorderView: View {
                             
                             GroupBox("gyroscope Z") {
                                 Chart {
-                                    ForEach(Array(recorder.gyroscopeDataZ.enumerated()), id: \.element) { index, number in
+                                    ForEach(Array(recorderVibrate.gyroscopeDataZ.enumerated()), id: \.element) { index, number in
                                         LineMark(
                                             x: .value("index", index),
                                             y: .value("value", number)
@@ -149,8 +149,8 @@ struct RecorderView: View {
                 HStack {
                     Spacer()
                     
-                    Toggle(isOn: $recorder.isRecording.animation()) {
-                        Text(recorder.isRecording ? "Stop" : "Start")
+                    Toggle(isOn: $recorderVibrate.isRecording.animation()) {
+                        Text(recorderVibrate.isRecording ? "Stop" : "Start")
                             .bold()
                             .animation(nil)
                     }
@@ -161,10 +161,10 @@ struct RecorderView: View {
                     Spacer()
                 }
             }
-            .navigationBarTitle(recorder.isRecording ? "Recording" : "Record")
+            .navigationBarTitle(recorderVibrate.isRecording ? "Recording" : "Record")
             .navigationBarItems(trailing:
-                Button(self.recorder.isRecording ? "Stop" : "") {
-                    self.recorder.isRecording = false
+                Button(self.recorderVibrate.isRecording ? "Stop" : "") {
+                    self.recorderVibrate.isRecording = false
                     #if DEBUG
                     print("set")
                     #endif
@@ -193,10 +193,10 @@ struct RecorderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             RecorderView()
-                .environmentObject(Recorder())
+                .environmentObject(RecorderVibrate())
             
             RecorderView()
-                .environmentObject(Recorder())
+                .environmentObject(RecorderVibrate())
                 .colorScheme(.dark)
         }
     }
