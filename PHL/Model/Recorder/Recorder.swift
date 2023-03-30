@@ -7,7 +7,7 @@ import AudioToolbox.AudioServices
 
 class Recorder: ObservableObject {
     
-    struct RecordSetting {
+    internal struct RecordSetting {
         var samplingRate: Double = 100
         var maxData: Int = 200
     }
@@ -235,7 +235,7 @@ class Recorder: ObservableObject {
     }
 }
 
-extension CMMotionManager {
+private extension CMMotionManager {
     
     var isDeviceAvailable: Bool {
         return isAccelerometerAvailable

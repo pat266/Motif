@@ -16,12 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let home = Home()
         let recorder = Recorder()
+        let recorderVibrate = RecorderVibrate()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: home
                 .environmentObject(recorder)
+                .environmentObject(recorderVibrate)
             )
             self.window = window
             window.makeKeyAndVisible()
