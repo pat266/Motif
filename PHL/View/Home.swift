@@ -6,14 +6,13 @@ struct Home: View {
     
     var body: some View {
         TabView {
-            
             RecorderView().tabItem {
                 Image(systemName: "waveform")
                 Text("Record")
             }
             
             AngleView().tabItem {
-                Image(systemName: "iphone.gen1.radiowaves.left.and.right")
+                Image(systemName: "angle")
                 Text("Angle")
             }
             
@@ -21,6 +20,33 @@ struct Home: View {
                 Image(systemName: "list.bullet")
                 Text("Samples")
             }
+            
+            Text("First View")
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "iphone.gen1.radiowaves.left.and.right")
+                        Text("first")
+                    }
+                }
+            
+            Text("Second View")
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "iphone.gen1.radiowaves.left.and.right")
+                        Text("second")
+                    }
+                }
+            
+            Text("Third View")
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "iphone.gen1.radiowaves.left.and.right")
+                        Text("third")
+                    }
+                }
             
         }.accentColor(recorder.isRecording ? .red : .blue)
     }
