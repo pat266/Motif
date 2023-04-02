@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let home = Home()
         let recorder = Recorder()
         let recorderVibrate = RecorderVibrate()
+        let recorderAngle = RecorderAngle()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -24,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(rootView: home
                 .environmentObject(recorder)
                 .environmentObject(recorderVibrate)
+                .environmentObject(recorderAngle)
             )
             self.window = window
             window.makeKeyAndVisible()

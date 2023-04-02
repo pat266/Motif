@@ -12,7 +12,7 @@ import Charts
 
 struct AngleView: View {
     
-    @EnvironmentObject var recorder: Recorder
+    @EnvironmentObject var recorderAngle: RecorderAngle
     
     init() {
         // Remove top empty space
@@ -24,14 +24,14 @@ struct AngleView: View {
          NavigationView {
             
             Form {
-                if recorder.isRecording == false {
+                if recorderAngle.isRecording == false {
                     // clear array whenever it stops recording
-                    let _ = recorder.clearAccelerometerArray()
-                    let _ = recorder.clearGyroscopeArray()
+//                    let _ = recorderAngle.clearAccelerometerArray()
+//                    let _ = recorderAngle.clearGyroscopeArray()
                     
                 } else {
                     HStack {
-                        Text(String(format: "%.0f", recorder.angle_degree))
+                        Text(String(format: "%.0f", recorderAngle.angle_degree))
                             .font(.custom("default", size: 48))
                             .fontWeight(.bold)
                             .frame(alignment: .center)// angle
@@ -44,8 +44,8 @@ struct AngleView: View {
                 HStack {
                     Spacer()
                     
-                    Toggle(isOn: $recorder.isRecording.animation()) {
-                        Text(recorder.isRecording ? "Stop" : "Start")
+                    Toggle(isOn: $recorderAngle.isRecording.animation()) {
+                        Text(recorderAngle.isRecording ? "Stop" : "Start")
                             .bold()
                             .animation(nil)
                     }
@@ -56,10 +56,10 @@ struct AngleView: View {
                     Spacer()
                 }
             }
-            .navigationBarTitle(recorder.isRecording ? "Recording" : "Record")
+            .navigationBarTitle(recorderAngle.isRecording ? "Recording" : "Record")
             .navigationBarItems(trailing:
-                Button(self.recorder.isRecording ? "Stop" : "") {
-                    self.recorder.isRecording = false
+                Button(self.recorderAngle.isRecording ? "Stop" : "") {
+                    self.recorderAngle.isRecording = false
                     #if DEBUG
                     print("set")
                     #endif
@@ -69,7 +69,7 @@ struct AngleView: View {
 }
 
 struct AngleView_Previews: PreviewProvider {
-    static let myEnvObject = Recorder()
+    static let myEnvObject = RecorderAngle()
     static var previews: some View {
         AngleView()
             .environmentObject(myEnvObject)
