@@ -13,6 +13,7 @@
 		439A36C029D5367B0007DAB2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36BF29D5367B0007DAB2 /* Angle.swift */; };
 		439A36C329D5C4C20007DAB2 /* AngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36C229D5C4C20007DAB2 /* AngleView.swift */; };
 		43D0E54129D8CF3C0006FD6F /* Pressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E54029D8CF3C0006FD6F /* Pressure.swift */; };
+		43D0E54329D905740006FD6F /* LinearRegression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E54229D905740006FD6F /* LinearRegression.swift */; };
 		4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEA2435F501004FCBC3 /* GyroData.swift */; };
 		4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */; };
 		4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */; };
@@ -68,6 +69,7 @@
 		439A36BF29D5367B0007DAB2 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		439A36C229D5C4C20007DAB2 /* AngleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleView.swift; sourceTree = "<group>"; };
 		43D0E54029D8CF3C0006FD6F /* Pressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pressure.swift; sourceTree = "<group>"; };
+		43D0E54229D905740006FD6F /* LinearRegression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearRegression.swift; sourceTree = "<group>"; };
 		4C103AEA2435F501004FCBC3 /* GyroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroData.swift; sourceTree = "<group>"; };
 		4C103AEC2435F52E004FCBC3 /* MagnetometerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnetometerData.swift; sourceTree = "<group>"; };
 		4C103AEE243606B1004FCBC3 /* DeviceMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMotion.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				439A36BF29D5367B0007DAB2 /* Angle.swift */,
 				43D0E54029D8CF3C0006FD6F /* Pressure.swift */,
+				43D0E54229D905740006FD6F /* LinearRegression.swift */,
 			);
 			path = Calculation;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				4CD57F0F2434B8C50007C963 /* Recorder.swift in Sources */,
 				4CD2793A2435CC0A0037E529 /* MotionDataSample.swift in Sources */,
 				4CD2793C2435CF210037E529 /* UIDevice+Model.swift in Sources */,
+				43D0E54329D905740006FD6F /* LinearRegression.swift in Sources */,
 				4CC980682430782700B36A7F /* Home.swift in Sources */,
 				439A36C329D5C4C20007DAB2 /* AngleView.swift in Sources */,
 				439A36C029D5367B0007DAB2 /* Angle.swift in Sources */,
