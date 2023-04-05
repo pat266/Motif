@@ -6,14 +6,14 @@ struct Home: View {
     
     var body: some View {
         TabView {
-            RecorderView().tabItem {
-                Image(systemName: "waveform")
-                Text("Record")
-            }
-            
             AngleView().tabItem {
                 Image(systemName: "angle")
                 Text("Angle")
+            }
+            
+            RecorderView().tabItem {
+                Image(systemName: "waveform")
+                Text("Record")
             }
             
             SampleListView().tabItem {

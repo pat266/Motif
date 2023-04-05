@@ -12,6 +12,7 @@
 		439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */; };
 		439A36C029D5367B0007DAB2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36BF29D5367B0007DAB2 /* Angle.swift */; };
 		439A36C329D5C4C20007DAB2 /* AngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36C229D5C4C20007DAB2 /* AngleView.swift */; };
+		439EF1E529DD9CC30024FB70 /* RecorderCalibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439EF1E429DD9CC30024FB70 /* RecorderCalibrate.swift */; };
 		43D0E54129D8CF3C0006FD6F /* Pressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E54029D8CF3C0006FD6F /* Pressure.swift */; };
 		43D0E54329D905740006FD6F /* LinearRegression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E54229D905740006FD6F /* LinearRegression.swift */; };
 		43D0E54529D923E60006FD6F /* RecorderAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D0E54429D923E60006FD6F /* RecorderAngle.swift */; };
@@ -69,6 +70,7 @@
 		439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLineChart.swift; sourceTree = "<group>"; };
 		439A36BF29D5367B0007DAB2 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		439A36C229D5C4C20007DAB2 /* AngleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleView.swift; sourceTree = "<group>"; };
+		439EF1E429DD9CC30024FB70 /* RecorderCalibrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderCalibrate.swift; sourceTree = "<group>"; };
 		43D0E54029D8CF3C0006FD6F /* Pressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pressure.swift; sourceTree = "<group>"; };
 		43D0E54229D905740006FD6F /* LinearRegression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearRegression.swift; sourceTree = "<group>"; };
 		43D0E54429D923E60006FD6F /* RecorderAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderAngle.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				4CD57F0E2434B8C50007C963 /* Recorder.swift */,
 				433E209F29D5E27F003C97EB /* RecorderVibrate.swift */,
 				43D0E54429D923E60006FD6F /* RecorderAngle.swift */,
+				439EF1E429DD9CC30024FB70 /* RecorderCalibrate.swift */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				433E20A029D5E27F003C97EB /* RecorderVibrate.swift in Sources */,
 				4C32B1272434DB8500A4120F /* ItemRow.swift in Sources */,
 				4C103AED2435F52E004FCBC3 /* MagnetometerData.swift in Sources */,
+				439EF1E529DD9CC30024FB70 /* RecorderCalibrate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
