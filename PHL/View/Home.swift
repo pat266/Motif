@@ -6,6 +6,11 @@ struct Home: View {
     
     var body: some View {
         TabView {
+            CalibrateView().tabItem {
+                Image(systemName: "iphone.gen1.radiowaves.left.and.right")
+                Text("Calibrate")
+            }
+            
             AngleView().tabItem {
                 Image(systemName: "angle")
                 Text("Angle")
