@@ -135,6 +135,7 @@ class RecorderCalibrate: ObservableObject {
         // Invalidate timer
         self.timerUpdate?.cancel()
         self.timerVibrate?.cancel()
+        self.timerCountDown?.cancel()
         
         // Stop data updates
         manager.stopAccelerometerUpdates()
