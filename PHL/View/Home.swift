@@ -11,6 +11,11 @@ struct Home: View {
                 Text("Calibrate")
             }
             
+            PressureView().tabItem {
+                Image(systemName: "scalemass")
+                Text("Weigh")
+            }
+            
             AngleView().tabItem {
                 Image(systemName: "angle")
                 Text("Angle")
@@ -24,11 +29,6 @@ struct Home: View {
             SampleListView().tabItem {
                 Image(systemName: "list.bullet")
                 Text("Samples")
-            }
-            
-            PressureView().tabItem {
-                Image(systemName: "scalemass")
-                Text("Weigh")
             }
             
             Text("First View")

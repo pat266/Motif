@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		433E209D29D5DEBB003C97EB /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E209C29D5DEBB003C97EB /* Vibrator.swift */; };
 		433E20A029D5E27F003C97EB /* RecorderVibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E209F29D5E27F003C97EB /* RecorderVibrate.swift */; };
-		43974CEB29E06B0F00D73D15 /* PressureViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43974CEA29E06B0F00D73D15 /* PressureViews.swift */; };
 		43974CED29E06C0800D73D15 /* RecorderPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43974CEC29E06C0800D73D15 /* RecorderPressure.swift */; };
 		43974CEF29E074FA00D73D15 /* PressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43974CEE29E074FA00D73D15 /* PressureView.swift */; };
 		439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */; };
@@ -71,7 +70,6 @@
 /* Begin PBXFileReference section */
 		433E209C29D5DEBB003C97EB /* Vibrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibrator.swift; sourceTree = "<group>"; };
 		433E209F29D5E27F003C97EB /* RecorderVibrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderVibrate.swift; sourceTree = "<group>"; };
-		43974CEA29E06B0F00D73D15 /* PressureViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureViews.swift; sourceTree = "<group>"; };
 		43974CEC29E06C0800D73D15 /* RecorderPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderPressure.swift; sourceTree = "<group>"; };
 		43974CEE29E074FA00D73D15 /* PressureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureView.swift; sourceTree = "<group>"; };
 		439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLineChart.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 		43974CE929E06A9300D73D15 /* Pressure View */ = {
 			isa = PBXGroup;
 			children = (
-				43974CEA29E06B0F00D73D15 /* PressureViews.swift */,
 				43974CEE29E074FA00D73D15 /* PressureView.swift */,
 			);
 			path = "Pressure View";
@@ -487,7 +484,6 @@
 				4CC9806A2430C87500B36A7F /* RecorderView.swift in Sources */,
 				4CB205C724376A8A0065C6E3 /* ShareSampleActivityView.swift in Sources */,
 				4CD57F0F2434B8C50007C963 /* Recorder.swift in Sources */,
-				43974CEB29E06B0F00D73D15 /* PressureViews.swift in Sources */,
 				4CD2793A2435CC0A0037E529 /* MotionDataSample.swift in Sources */,
 				4CD2793C2435CF210037E529 /* UIDevice+Model.swift in Sources */,
 				43D0E54329D905740006FD6F /* LinearRegression.swift in Sources */,

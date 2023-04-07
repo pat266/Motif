@@ -55,7 +55,7 @@ struct PressureView: View {
                     Spacer()
                 }
             }
-            .navigationBarTitle(recorderPressure.isCalibrating ? "Calibrating" : "Calibrate")
+            .navigationBarTitle(recorderPressure.isCalibrating ? "Weighing" : "Weigh")
             .navigationBarItems(trailing:
                 Button(self.recorderPressure.isCalibrating ? "Stop" : "") {
                     self.recorderPressure.isCalibrating = false
