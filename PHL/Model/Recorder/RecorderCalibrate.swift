@@ -61,7 +61,7 @@ class RecorderCalibrate: ObservableObject {
         self.intensityStr = "Starting in 3"
         
         // start vibrating
-        vibrator.vibrateIndefinitely()
+        vibrator.vibrateInSeconds(duration: 20)
         
         // Set sampling intervals
         manager.accelerometerUpdateInterval = samplingInterval

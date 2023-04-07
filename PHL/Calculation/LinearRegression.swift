@@ -33,3 +33,13 @@ class LinearRegression {
         }
     }
 }
+
+// actual values (intensity, weight)
+let data: [(x: Double, y: Double)] =
+    [
+        (0.0009405085245768233, 55), // fitbit (sliding)
+        (0.0011902782016330294, 0),
+        (0.0010968004014756943, 105), // headphone + case (sliding)
+        (0.0004814394632975258, 287),
+        (0.0004429361979166672, 266) // phone
+    ]
