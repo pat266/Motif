@@ -32,14 +32,19 @@ class LinearRegression {
             }
         }
     }
+    
+    func fit(data: [(x: Double, y: Double)]) {
+        for _ in 1...numberOfIterations {
+            for i in 0..<data.count {
+                let difference = data[i].y - predict(data[i].x)
+                intercept += alpha * difference
+                slope += alpha * difference * data[i].x
+            }
+        }
+    }
+    
+    func clear() {
+        intercept = 0.0
+        slope = 0.0
+    }
 }
-
-// actual values (intensity, weight)
-let data: [(x: Double, y: Double)] =
-    [
-        (0.0009405085245768233, 55), // fitbit (sliding)
-        (0.0011902782016330294, 0),
-        (0.0010968004014756943, 105), // headphone + case (sliding)
-        (0.0004814394632975258, 287),
-        (0.0004429361979166672, 266) // phone
-    ]

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		433E209D29D5DEBB003C97EB /* Vibrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E209C29D5DEBB003C97EB /* Vibrator.swift */; };
 		433E20A029D5E27F003C97EB /* RecorderVibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E209F29D5E27F003C97EB /* RecorderVibrate.swift */; };
+		43974CEB29E06B0F00D73D15 /* PressureViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43974CEA29E06B0F00D73D15 /* PressureViews.swift */; };
+		43974CED29E06C0800D73D15 /* RecorderPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43974CEC29E06C0800D73D15 /* RecorderPressure.swift */; };
+		43974CEF29E074FA00D73D15 /* PressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43974CEE29E074FA00D73D15 /* PressureView.swift */; };
 		439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */; };
 		439A36C029D5367B0007DAB2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36BF29D5367B0007DAB2 /* Angle.swift */; };
 		439A36C329D5C4C20007DAB2 /* AngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A36C229D5C4C20007DAB2 /* AngleView.swift */; };
@@ -68,6 +71,9 @@
 /* Begin PBXFileReference section */
 		433E209C29D5DEBB003C97EB /* Vibrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibrator.swift; sourceTree = "<group>"; };
 		433E209F29D5E27F003C97EB /* RecorderVibrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderVibrate.swift; sourceTree = "<group>"; };
+		43974CEA29E06B0F00D73D15 /* PressureViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureViews.swift; sourceTree = "<group>"; };
+		43974CEC29E06C0800D73D15 /* RecorderPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderPressure.swift; sourceTree = "<group>"; };
+		43974CEE29E074FA00D73D15 /* PressureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureView.swift; sourceTree = "<group>"; };
 		439A36B229BE1F9E0007DAB2 /* SampleLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLineChart.swift; sourceTree = "<group>"; };
 		439A36BF29D5367B0007DAB2 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		439A36C229D5C4C20007DAB2 /* AngleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleView.swift; sourceTree = "<group>"; };
@@ -145,8 +151,18 @@
 				433E209F29D5E27F003C97EB /* RecorderVibrate.swift */,
 				43D0E54429D923E60006FD6F /* RecorderAngle.swift */,
 				439EF1E429DD9CC30024FB70 /* RecorderCalibrate.swift */,
+				43974CEC29E06C0800D73D15 /* RecorderPressure.swift */,
 			);
 			path = Recorder;
+			sourceTree = "<group>";
+		};
+		43974CE929E06A9300D73D15 /* Pressure View */ = {
+			isa = PBXGroup;
+			children = (
+				43974CEA29E06B0F00D73D15 /* PressureViews.swift */,
+				43974CEE29E074FA00D73D15 /* PressureView.swift */,
+			);
+			path = "Pressure View";
 			sourceTree = "<group>";
 		};
 		439A36BE29D536640007DAB2 /* Calculation */ = {
@@ -193,6 +209,7 @@
 				439A36C129D5C4A00007DAB2 /* Angle View */,
 				439EF1E629DDA1A00024FB70 /* Calibrate View */,
 				4CA9C45F24363017006E8F3B /* Sample List View */,
+				43974CE929E06A9300D73D15 /* Pressure View */,
 				4C32B1262434DB8500A4120F /* ItemRow.swift */,
 			);
 			path = View;
@@ -452,6 +469,7 @@
 				43D0E54129D8CF3C0006FD6F /* Pressure.swift in Sources */,
 				4CCFB668243222EE00E90C80 /* CSVContainer.swift in Sources */,
 				4CB205C924376CDF0065C6E3 /* FileManager+.swift in Sources */,
+				43974CED29E06C0800D73D15 /* RecorderPressure.swift in Sources */,
 				4CC980372430767400B36A7F /* AppDelegate.swift in Sources */,
 				43D0E54529D923E60006FD6F /* RecorderAngle.swift in Sources */,
 				439A36B329BE1F9E0007DAB2 /* SampleLineChart.swift in Sources */,
@@ -459,6 +477,7 @@
 				4C103AEF243606B1004FCBC3 /* DeviceMotion.swift in Sources */,
 				439EF1E829DDA1CF0024FB70 /* CalibrateView.swift in Sources */,
 				4CE0CBB12434D4DA00494CD8 /* MotionDataEntry.swift in Sources */,
+				43974CEF29E074FA00D73D15 /* PressureView.swift in Sources */,
 				4C103AEB2435F501004FCBC3 /* GyroData.swift in Sources */,
 				4CD2793E2435F34D0037E529 /* AccelerometerData.swift in Sources */,
 				4CC980392430767400B36A7F /* SceneDelegate.swift in Sources */,
@@ -468,6 +487,7 @@
 				4CC9806A2430C87500B36A7F /* RecorderView.swift in Sources */,
 				4CB205C724376A8A0065C6E3 /* ShareSampleActivityView.swift in Sources */,
 				4CD57F0F2434B8C50007C963 /* Recorder.swift in Sources */,
+				43974CEB29E06B0F00D73D15 /* PressureViews.swift in Sources */,
 				4CD2793A2435CC0A0037E529 /* MotionDataSample.swift in Sources */,
 				4CD2793C2435CF210037E529 /* UIDevice+Model.swift in Sources */,
 				43D0E54329D905740006FD6F /* LinearRegression.swift in Sources */,

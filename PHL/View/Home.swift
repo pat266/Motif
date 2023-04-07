@@ -26,12 +26,17 @@ struct Home: View {
                 Text("Samples")
             }
             
+            PressureView().tabItem {
+                Image(systemName: "scalemass")
+                Text("Weigh")
+            }
+            
             Text("First View")
                 .font(.title)
                 .tabItem {
                     VStack {
                         Image(systemName: "iphone.gen1.radiowaves.left.and.right")
-                        Text("first")
+                        Text("second")
                     }
                 }
             
