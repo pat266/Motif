@@ -8,7 +8,7 @@ import AudioToolbox.AudioServices
 class RecorderPressure: ObservableObject {
     
     internal struct RecordSetting {
-        var samplingRate: Double = 100
+        var samplingRate: Double = 200
         var maxData: Int = 200
     }
     
@@ -45,11 +45,11 @@ class RecorderPressure: ObservableObject {
     // actual values (intensity, weight) - hard coded
     private let data: [(x: Double, y: Double)] =
         [
-            (0.0009405085245768233, 55), // fitbit (sliding)
-            (0.0011902782016330294, 0),
-            (0.0010968004014756943, 105), // headphone + case (sliding)
-            (0.0004814394632975258, 287),
-            (0.0004429361979166672, 266) // phone
+            (0.0005369690916273328, 0), // nothing
+            (0.000390707736545139, 271), // iphone
+            (0.0004271815617879224, 154), // pixel 5
+            (0.000441518274943034, 38), // iphone nm case
+            (0.0003724842495388455, 382) // speaker
         ]
     private let model: LinearRegression = LinearRegression()
     
@@ -59,7 +59,7 @@ class RecorderPressure: ObservableObject {
         // loadSampleListFromDisk()
         
         // fit the hard-coded data
-        model.fit(data: self.data)
+        self.model.fit(data: self.data)
     }
     
     // MARK: - De-Initializer
@@ -127,7 +127,8 @@ class RecorderPressure: ObservableObject {
             .sink { date in
                 elapsedSeconds += 1
                 if elapsedSeconds > 5 {
-                    // let intensity = String(self.getIntensity())
+                     let intensity = String(self.getIntensity())
+                    print("Intensity: " + intensity)
                     // self.intensityStr = "Intensity: " + intensity
                     let weight = self.model.predict(self.getIntensity())
                     self.intensityStr = "Predicted weight: " + String(weight)

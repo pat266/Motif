@@ -8,7 +8,7 @@ import AudioToolbox.AudioServices
 class RecorderCalibrate: ObservableObject {
     
     internal struct RecordSetting {
-        var samplingRate: Double = 100
+        var samplingRate: Double = 200
         var maxData: Int = 200
     }
     
