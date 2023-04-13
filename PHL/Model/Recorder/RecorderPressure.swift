@@ -51,6 +51,25 @@ class RecorderPressure: ObservableObject {
             (0.000441518274943034, 38), // iphone nm case
             (0.0003724842495388455, 382) // speaker
         ]
+    
+    private let iphoneSE_data: [(x: Double, y: Double)] =
+        [
+            (0.0005038803948296405, 111),
+            (0.00036225869920518996, 817),
+            (0.0003869273503621398, 571),
+            (0.00048243151770697724, 160),
+            (0.0005736389160156272, 0)
+        ]
+    
+    private let iphone13_data: [(x: Double, y: Double)] =
+        [
+            (0.0009183968438042532, 111),
+            (0.0005593922932942707, 817),
+            (0.0005666442871093751, 571),
+            (0.0008060882568359371, 160),
+            (0.0015439147949218677, 0)
+        ]
+    
     private let model: LinearRegression = LinearRegression()
     
     // MARK: - Initializer
@@ -60,6 +79,8 @@ class RecorderPressure: ObservableObject {
         
         // fit the hard-coded data
         self.model.fit(data: self.data)
+        print("Intercept: " + String(self.model.intercept))
+        print("Slope: " + String(self.model.slope))
     }
     
     // MARK: - De-Initializer

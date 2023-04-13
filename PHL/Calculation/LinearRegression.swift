@@ -13,34 +13,30 @@ class LinearRegression {
     var intercept: Double = 0.0
     var slope: Double = 0.0
     
-    // iterative variables
-    let numberOfIterations = 100
-    let alpha = 0.0001
-    
     func predict(_ xPred: Double) -> Double {
         return intercept + slope * xPred
     }
     
     func fit(x: [Double], y: [Double]) {
         if x.count == y.count {
-            for _ in 1...numberOfIterations {
-                for i in 0..<y.count {
-                    let difference = y[i] - predict(x[i])
-                    intercept += alpha * difference
-                    slope += alpha * difference * x[i]
-                }
+            let n = Double(x.count)
+            let xMean = x.reduce(0.0, +) / n
+            let yMean = y.reduce(0.0, +) / n
+            var numerator: Double = 0.0
+            var denominator: Double = 0.0
+            for i in 0..<x.count {
+                numerator += (x[i] - xMean) * (y[i] - yMean)
+                denominator += pow((x[i] - xMean), 2)
             }
+            slope = numerator / denominator
+            intercept = yMean - slope * xMean
         }
     }
     
     func fit(data: [(x: Double, y: Double)]) {
-        for _ in 1...numberOfIterations {
-            for i in 0..<data.count {
-                let difference = data[i].y - predict(data[i].x)
-                intercept += alpha * difference
-                slope += alpha * difference * data[i].x
-            }
-        }
+        let xData = data.map { $0.x }
+        let yData = data.map { $0.y }
+        fit(x: xData, y: yData)
     }
     
     func clear() {
