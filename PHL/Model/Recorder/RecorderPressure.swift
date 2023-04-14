@@ -31,7 +31,7 @@ class RecorderPressure: ObservableObject {
         }
     }
     
-    @Published var accelerometerDataY: [Double] = []
+    @Published var accelerometerVectorData: [Double] = []
     @Published var gyroscopeDataY: [Double] = []
     
     @Published var intensityStr: String = ""
@@ -78,7 +78,7 @@ class RecorderPressure: ObservableObject {
         // loadSampleListFromDisk()
         
         // fit the hard-coded data
-        self.model.fit(data: self.data)
+        self.model.fit(data: self.iphoneSE_data)
         print("Intercept: " + String(self.model.intercept))
         print("Slope: " + String(self.model.slope))
     }
@@ -186,22 +186,25 @@ class RecorderPressure: ObservableObject {
     
     private func updateData(accelerometerData: CMAccelerometerData, gyroData: CMGyroData) -> Void {
         // add accelerometer data to the array
-        self.accelerometerDataY.append(accelerometerData.acceleration.y)
+        let currAccelerometerData = sqrt(pow(accelerometerData.acceleration.x, 2) + pow(accelerometerData.acceleration.y, 2) +
+             pow(accelerometerData.acceleration.z, 2))
+        self.accelerometerVectorData.append(currAccelerometerData)
         
         // add gyroscope data to the array
-        self.gyroscopeDataY.append(gyroData.rotationRate.y)
+        // self.gyroscopeDataY.append(gyroData.rotationRate.y)
         
     }
     
     private func getIntensity() -> Double {
-        return Pressure.calculateIntensity(y_accelerometer: self.accelerometerDataY)
+        let smoothedAccelerometer = Pressure.calculateSmoothedAverage(values: self.accelerometerVectorData, windowSize: 2)
+        return Pressure.calculateIntensity(accelerometer: self.accelerometerVectorData)
     }
     
     // MARK: - Clear the data
     
     public func clearAccelerometerArray() {
-        if (!accelerometerDataY.isEmpty) {
-            self.accelerometerDataY.removeAll()
+        if (!accelerometerVectorData.isEmpty) {
+            self.accelerometerVectorData.removeAll()
         }
     }
     
@@ -209,6 +212,20 @@ class RecorderPressure: ObservableObject {
         if (!gyroscopeDataY.isEmpty) {
             self.gyroscopeDataY.removeAll()
         }
+    }
+    
+    // MARK: - Get DataPoint
+    func getDatapoint(sensorData: [Double]) -> Double {
+        var squaredDifferences: [Double]
+        squaredDifferences = Pressure.calculateSmoothedAverage(values: sensorData, windowSize: 2)
+        for i in 0..<squaredDifferences.count {
+            squaredDifferences[i] = squaredDifferences[i] - sensorData[i]
+            squaredDifferences[i] = squaredDifferences[i] * squaredDifferences[i]
+        }
+        
+        let average = squaredDifferences.reduce(0, +) / Double(squaredDifferences.count)
+        let standardDeviation = sqrt(average)
+        return standardDeviation
     }
 }
 
