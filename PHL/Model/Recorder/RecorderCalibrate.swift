@@ -3,7 +3,7 @@ import Combine
 import CoreMotion // for accelerator and gyroscope
 import CoreHaptics // for vibration
 import AudioToolbox.AudioServices
-
+import UIKit
 
 class RecorderCalibrate: ObservableObject {
     
@@ -114,9 +114,8 @@ class RecorderCalibrate: ObservableObject {
                 elapsedSeconds += 1
                 if elapsedSeconds > 5 {
                     // let intensity = String(format: "%.10f", self.getIntensity())
-                    let intensity = String(self.getIntensity())
-                    self.intensityStr = "Intensity: " + intensity
-                    print("Intensity: " + intensity)
+                    self.intensityStr = String(self.getIntensity())
+                    print("Intensity: " + self.intensityStr)
                     self.isCalibrating = false
                     self.timerVibrate?.cancel()
                 } else {
@@ -192,6 +191,7 @@ class RecorderCalibrate: ObservableObject {
         let standardDeviation = sqrt(average)
         return standardDeviation
     }
+    
 }
 
 private extension CMMotionManager {

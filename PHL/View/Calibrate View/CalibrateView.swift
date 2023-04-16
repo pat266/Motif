@@ -10,6 +10,9 @@ import SwiftUI
 
 struct CalibrateView: View {
     @EnvironmentObject var recorderCalibrate: RecorderCalibrate
+    @State private var text: String = ""
+    @State private var buttonText  = "Copy to clipboard"
+    private let pasteboard = UIPasteboard.general
     
     init() {
         // Remove top empty space
@@ -36,6 +39,14 @@ struct CalibrateView: View {
                         .font(.custom("default", size: 24))
                         .fontWeight(.bold)
                         .frame(alignment: .center)
+                    // MARK: Copy to clipboard Button
+                    Spacer()
+                    Button {
+                        copyToClipboard()
+                    } label: {
+                        Label(buttonText, systemImage: "doc.on.doc.fill")
+                    }
+                    .tint(.orange)
                 }
                 
                 // MARK: Start/Stop Button
@@ -63,6 +74,22 @@ struct CalibrateView: View {
                     print("set")
                     #endif
             })
+        }
+    }
+    
+    func paste(){
+        if let string = pasteboard.string {
+            text = string
+        }
+    }
+    
+    func copyToClipboard() {
+        pasteboard.string = self.text
+        
+        self.buttonText = "Copied!"
+        self.text = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.buttonText = "Copy to clipboard"
         }
     }
 }
