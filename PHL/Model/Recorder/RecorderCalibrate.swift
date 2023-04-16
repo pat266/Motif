@@ -116,6 +116,7 @@ class RecorderCalibrate: ObservableObject {
                     // let intensity = String(format: "%.10f", self.getIntensity())
                     self.intensityStr = String(self.getIntensity())
                     print("Intensity: " + self.intensityStr)
+                    self.exportToCSV(fileName: "calibration.csv")
                     self.isCalibrating = false
                     self.timerVibrate?.cancel()
                 } else {
@@ -190,6 +191,36 @@ class RecorderCalibrate: ObservableObject {
         let average = squaredDifferences.reduce(0, +) / Double(squaredDifferences.count)
         let standardDeviation = sqrt(average)
         return standardDeviation
+    }
+    
+    func exportToCSV(fileName: String) {
+        let smoothedAccelerometerVectorData = Pressure.calculateSmoothedAverage(values: self.accelerometerVectorData, windowSize: 2)
+        var csvText = "accelerometerVectorData,smoothedAccelerometerVectorData,intensity\n"
+        
+        for i in 0..<accelerometerVectorData.count {
+            if (i == 0) {
+                let newLine = "\(accelerometerVectorData[i]),\(smoothedAccelerometerVectorData[i]),\(self.getIntensity())\n"
+                csvText += newLine
+            } else {
+                let newLine = "\(accelerometerVectorData[i]),\(smoothedAccelerometerVectorData[i])\n"
+                csvText += newLine
+            }
+            
+        }
+        
+        // Create a temporary URL for the file
+        let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        
+        do {
+            try csvText.write(to: tempURL, atomically: true, encoding: .utf8)
+            // Create a UIActivityViewController with the temporary file as the activity item
+            let activityVC = UIActivityViewController(activityItems: [tempURL], applicationActivities: nil)
+            // Present the share sheet
+            UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+            print("CSV file created at path: \(tempURL)")
+        } catch {
+            print("Error creating CSV file: \(error)")
+        }
     }
     
 }
