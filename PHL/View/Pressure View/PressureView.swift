@@ -1,18 +1,15 @@
 //
-//  AngleView.swift
+//  PressureView.swift
 //  PHL
 //
-//  Created by Tran Pat on 3/29/23.
+//  Created by Tran Pat on 4/7/23.
 //  Copyright © 2023 PAN Weiheng. All rights reserved.
 //
 
-import Combine
 import SwiftUI
-import Charts
 
-struct AngleView: View {
-    
-    @EnvironmentObject var recorderAngle: RecorderAngle
+struct PressureView: View {
+    @EnvironmentObject var recorderPressure: RecorderPressure
     
     init() {
         // Remove top empty space
@@ -24,19 +21,21 @@ struct AngleView: View {
          NavigationView {
             
             Form {
-                if recorderAngle.isRecording == false {
+                if recorderPressure.isCalibrating == false {
                     // clear array whenever it stops recording
-//                    let _ = recorderAngle.clearAccelerometerArray()
-//                    let _ = recorderAngle.clearGyroscopeArray()
+                    let _ = recorderPressure.clearAccelerometerArray()
+                    let _ = recorderPressure.clearGyroscopeArray()
                     
                 } else {
-                    HStack {
-                        Text(String(format: "%.0f", recorderAngle.angle_degree))
-                            .font(.custom("default", size: 48))
-                            .fontWeight(.bold)
-                            .frame(alignment: .center)// angle
-                    }
                     
+                    
+                }
+                
+                HStack {
+                    Text(recorderPressure.intensityStr)
+                        .font(.custom("default", size: 24))
+                        .fontWeight(.bold)
+                        .frame(alignment: .center)
                 }
                 
                 // MARK: Start/Stop Button
@@ -44,8 +43,8 @@ struct AngleView: View {
                 HStack {
                     Spacer()
                     
-                    Toggle(isOn: $recorderAngle.isRecording.animation()) {
-                        Text(recorderAngle.isRecording ? "Stop" : "Start")
+                    Toggle(isOn: $recorderPressure.isCalibrating.animation()) {
+                        Text(recorderPressure.isCalibrating ? "Stop" : "Start")
                             .bold()
                             .animation(nil)
                     }
@@ -56,10 +55,10 @@ struct AngleView: View {
                     Spacer()
                 }
             }
-            .navigationBarTitle(recorderAngle.isRecording ? "Recording" : "Record")
+            .navigationBarTitle(recorderPressure.isCalibrating ? "Weighing" : "Weigh")
             .navigationBarItems(trailing:
-                Button(self.recorderAngle.isRecording ? "Stop" : "") {
-                    self.recorderAngle.isRecording = false
+                Button(self.recorderPressure.isCalibrating ? "Stop" : "") {
+                    self.recorderPressure.isCalibrating = false
                     #if DEBUG
                     print("set")
                     #endif
@@ -68,13 +67,13 @@ struct AngleView: View {
     }
 }
 
-struct AngleView_Previews: PreviewProvider {
-    static let myEnvObject = RecorderAngle()
+struct PressureView_Previews: PreviewProvider {
+    static let myEnvObject = RecorderPressure()
     static var previews: some View {
-        AngleView()
+        PressureView()
             .environmentObject(myEnvObject)
         
-        AngleView()
+        PressureView()
             .environmentObject(myEnvObject)
             .colorScheme(.dark)
     }
