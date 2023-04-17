@@ -195,14 +195,15 @@ class RecorderCalibrate: ObservableObject {
     
     func exportToCSV(fileName: String) {
         let smoothedAccelerometerVectorData = Pressure.calculateSmoothedAverage(values: self.accelerometerVectorData, windowSize: 2)
-        var csvText = "accelerometerVectorData,smoothedAccelerometerVectorData,intensity\n"
+        let intensityArr = Pressure.calculateIntensityArr(accelerometer: smoothedAccelerometerVectorData)
+        var csvText = "accelerometerVectorData,smoothedAccelerometerVectorData,intensityArr,intensity\n"
         
         for i in 0..<accelerometerVectorData.count {
             if (i == 0) {
-                let newLine = "\(accelerometerVectorData[i]),\(smoothedAccelerometerVectorData[i]),\(self.getIntensity())\n"
+                let newLine = "\(accelerometerVectorData[i]),\(smoothedAccelerometerVectorData[i]),\(intensityArr[i]),\(self.getIntensity())\n"
                 csvText += newLine
             } else {
-                let newLine = "\(accelerometerVectorData[i]),\(smoothedAccelerometerVectorData[i])\n"
+                let newLine = "\(accelerometerVectorData[i]),\(smoothedAccelerometerVectorData[i]),\(intensityArr[i])\n"
                 csvText += newLine
             }
             

@@ -23,6 +23,18 @@ class Pressure {
         return intensity;
     }
     
+    static func calculateIntensityArr(accelerometer: [Double]) -> [Double] {
+        // subtracting all the values from the input array by the average
+        let average = Double(accelerometer.reduce(0, +)) / Double(accelerometer.count)
+        var new_accelerometer : [Double] = []
+        for i in 0..<accelerometer.count {
+            new_accelerometer.append(accelerometer[i] - average)
+        }
+        // take the absolute value for all values
+        new_accelerometer = new_accelerometer.map(abs)
+        return new_accelerometer;
+    }
+    
     static func calculateSmoothedAverage(values: [Double], windowSize: Int) -> [Double] {
         var smoothedAverages = Array(repeating: Double(), count: values.count)
         let n = values.count
